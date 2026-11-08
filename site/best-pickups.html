@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Best pickups — Pickup Timing Study 25/26</title>
+<meta name="description" content="The most valuable single Fantrax pickups of 25/26, sortable.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tds.css">
+</head>
+<body class="p-best">
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="masthead-title">The Draft Society <span>/ Pickup Timing Study</span></div>
+    <nav>
+      <a href="index.html">Findings</a>
+      <a href="timing.html">Timing</a>
+      <a href="positions.html">Positions</a>
+      <a href="season.html">Season</a>
+      <a href="faab.html">The money</a>
+      <a href="best-pickups.html" aria-current="page">Best pickups</a>
+      <a href="method.html">Method</a>
+    </nav>
+  </header>
+
+  <p class="kicker">The hauls</p>
+  <h1>Best pickups<br>of the season</h1>
+  <p class="lede">The most valuable adds of 25/26, by what the player scored
+  in the gameweek he was picked up for. One row per player-gameweek, since
+  across 18 divisions the same haul gets claimed by dozens of teams &mdash;
+  "Teams" is how many took him. Click any column to sort.</p>
+
+  <div style="display:flex;flex-wrap:wrap;gap:8px;margin:18px 0 6px" id="filters"></div>
+
+  <div class="scroll"><table id="best">
+    <thead><tr>
+      <th>Player</th>
+      <th data-sort="off">Pos</th>
+      <th data-sort="off">Club</th>
+      <th>Earliest route</th>
+      <th class="num" data-type="num">GW</th>
+      <th class="num" data-type="num">Teams</th>
+      <th class="num" data-type="num">Closest add</th>
+      <th class="num" data-type="num">FPts</th>
+      <th class="num" data-type="num">Next 4 GW</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <p class="note" style="margin-top:18px">"Closest add" is the latest anyone
+  got him &mdash; how long before that player's own kickoff. Anything between
+  70 and 75 minutes was claimed in the five minutes after the team sheets
+  landed, and is picked out in gold.</p>
+
+  <footer>
+    <p><a href="index.html">Back to the findings</a> &middot;
+    <a href="method.html">Method and caveats</a></p>
+  </footer>
+
+</div>
+
+<script src="data/metrics.js"></script>
+<script src="assets/tds.js"></script>
+<script>
+(function () {
+  var m;
+  try { m = TDS.data(); }
+  catch (e) { TDS.fail(document.getElementById('filters'), e.message); return; }
+
+  var rows = m.best_pickups || [];
+  var body = document.querySelector('#best tbody');
+  var active = 'all';
+
+  function minutes(value) {
+    if (value === null || value === undefined) { return '--'; }
+    if (value < 1440) { return Math.round(value) + 'm'; }
+    return (value / 1440).toFixed(1) + 'd';
+  }
+
+  function draw() {
+    body.innerHTML = '';
+    rows.filter(function (r) { return active === 'all' || r.bucket === active; })
+      .forEach(function (r) {
+        var tr = document.createElement('tr');
+        tr.appendChild(TDS.el('td', null, r.player));
+        tr.appendChild(TDS.el('td', null, r.position));
+        tr.appendChild(TDS.el('td', null, r.club));
+
+        var bucket = TDS.el('td');
+        bucket.appendChild(TDS.el('span', 'tag ' + r.bucket, TDS.SHORT[r.bucket]));
+        bucket.dataset.value = r.bucket;
+        tr.appendChild(bucket);
+
+        var gw = TDS.el('td', 'num', 'GW' + r.gameweek);
+        gw.dataset.value = r.gameweek;
+        tr.appendChild(gw);
+
+        var teams = TDS.el('td', 'num', r.teams);
+        teams.dataset.value = r.teams;
+        tr.appendChild(teams);
+
+        var mins = TDS.el('td', 'num', minutes(r.minutes_before_ko));
+        mins.dataset.value = r.minutes_before_ko;
+        if (r.minutes_before_ko >= 70 && r.minutes_before_ko <= 75) {
+          mins.style.color = 'var(--gold)';
+        }
+        tr.appendChild(mins);
+
+        var pts = TDS.el('td', 'num', TDS.num(r.gw_fpts));
+        pts.dataset.value = r.gw_fpts;
+        tr.appendChild(pts);
+
+        var next4 = TDS.el('td', 'num', r.next4_fpts === null ? '--'
+          : TDS.num(r.next4_fpts));
+        next4.dataset.value = r.next4_fpts === null ? '' : r.next4_fpts;
+        tr.appendChild(next4);
+
+        body.appendChild(tr);
+      });
+  }
+
+  var choices = [['all', 'All ' + rows.length]].concat(
+    TDS.BUCKETS.map(function (b) {
+      return [b, TDS.SHORT[b] + ' ' +
+        rows.filter(function (r) { return r.bucket === b; }).length];
+    }));
+
+  choices.forEach(function (choice) {
+    var button = document.createElement('button');
+    button.textContent = choice[1];
+    button.style.cssText = 'font-family:var(--mono);font-size:11.5px;' +
+      'letter-spacing:.08em;text-transform:uppercase;padding:6px 12px;' +
+      'cursor:pointer;background:var(--panel);color:var(--grey);' +
+      'border:1px solid var(--panel-edge)';
+    button.addEventListener('click', function () {
+      active = choice[0];
+      Array.prototype.forEach.call(
+        document.querySelectorAll('#filters button'), function (other) {
+          other.style.color = 'var(--grey)';
+          other.style.borderColor = 'var(--panel-edge)';
+        });
+      button.style.color = 'var(--gold)';
+      button.style.borderColor = 'var(--gold-deep)';
+      draw();
+    });
+    if (choice[0] === 'all') {
+      button.style.color = 'var(--gold)';
+      button.style.borderColor = 'var(--gold-deep)';
+    }
+    document.getElementById('filters').appendChild(button);
+  });
+
+  draw();
+  TDS.sortable(document.getElementById('best'));
+}());
+</script>
+</body>
+</html>

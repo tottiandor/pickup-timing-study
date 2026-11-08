@@ -1,0 +1,2583 @@
+{
+ "generated": "2026-11-08T10:39:56+01:00",
+ "bucket_labels": {
+  "waivers": "Waivers (>KO-75)",
+  "lineup_snipe": "Lineup snipe (KO-75 to KO-70)",
+  "late_add": "Late add (KO-70 to KO)"
+ },
+ "lock_minutes": 75,
+ "snipe_floor": 70,
+ "counts": {
+  "events": 22488,
+  "unique_player_gameweeks": 7589,
+  "baseline": 51511
+ },
+ "per_event": {
+  "waivers": {
+   "n": 16555,
+   "start_rate": 66.7,
+   "mean_fpts": 6.12,
+   "median_fpts": 4.25,
+   "pps": 8.38,
+   "mean_next4": 21.62,
+   "mean_held": 22.15,
+   "mean_fpts_if_started": 8.38
+  },
+  "lineup_snipe": {
+   "n": 1075,
+   "start_rate": 97.7,
+   "mean_fpts": 7.74,
+   "median_fpts": 6.0,
+   "pps": 7.88,
+   "mean_next4": 20.86,
+   "mean_held": 15.58,
+   "mean_fpts_if_started": 7.88
+  },
+  "late_add": {
+   "n": 4858,
+   "start_rate": 98.0,
+   "mean_fpts": 7.07,
+   "median_fpts": 5.5,
+   "pps": 7.19,
+   "mean_next4": 21.18,
+   "mean_held": 18.34,
+   "mean_fpts_if_started": 7.19
+  }
+ },
+ "per_unique": {
+  "waivers": {
+   "n": 4770,
+   "start_rate": 63.3,
+   "mean_fpts": 5.48,
+   "median_fpts": 3.5,
+   "pps": 7.86,
+   "mean_next4": 20.04,
+   "mean_held": 21.2,
+   "mean_fpts_if_started": 7.86
+  },
+  "lineup_snipe": {
+   "n": 628,
+   "start_rate": 96.3,
+   "mean_fpts": 7.28,
+   "median_fpts": 5.75,
+   "pps": 7.48,
+   "mean_next4": 20.91,
+   "mean_held": 14.04,
+   "mean_fpts_if_started": 7.48
+  },
+  "late_add": {
+   "n": 2191,
+   "start_rate": 96.2,
+   "mean_fpts": 7.0,
+   "median_fpts": 5.5,
+   "pps": 7.23,
+   "mean_next4": 21.82,
+   "mean_held": 20.58,
+   "mean_fpts_if_started": 7.23
+  }
+ },
+ "baseline": {
+  "n": 51511,
+  "mean_fpts": 6.49,
+  "median_fpts": 5.25,
+  "conditioned_on_start": true,
+  "mean_per_gameweek": 1355.6
+ },
+ "by_position": {
+  "D": {
+   "waivers": {
+    "n": 6261,
+    "start_rate": 72.2,
+    "mean_fpts": 6.91,
+    "median_fpts": 5.25,
+    "pps": 9.13,
+    "mean_next4": 23.57,
+    "mean_held": 24.6,
+    "mean_fpts_if_started": 9.13
+   },
+   "lineup_snipe": {
+    "n": 363,
+    "start_rate": 98.3,
+    "mean_fpts": 9.4,
+    "median_fpts": 7.5,
+    "pps": 9.53,
+    "mean_next4": 23.45,
+    "mean_held": 17.9,
+    "mean_fpts_if_started": 9.53
+   },
+   "late_add": {
+    "n": 1815,
+    "start_rate": 98.8,
+    "mean_fpts": 7.66,
+    "median_fpts": 6.75,
+    "pps": 7.74,
+    "mean_next4": 22.14,
+    "mean_held": 19.91,
+    "mean_fpts_if_started": 7.74
+   }
+  },
+  "F": {
+   "waivers": {
+    "n": 3500,
+    "start_rate": 50.3,
+    "mean_fpts": 5.19,
+    "median_fpts": 3.0,
+    "pps": 7.97,
+    "mean_next4": 18.75,
+    "mean_held": 17.57,
+    "mean_fpts_if_started": 7.97
+   },
+   "lineup_snipe": {
+    "n": 290,
+    "start_rate": 97.2,
+    "mean_fpts": 7.39,
+    "median_fpts": 5.0,
+    "pps": 7.55,
+    "mean_next4": 17.83,
+    "mean_held": 11.18,
+    "mean_fpts_if_started": 7.55
+   },
+   "late_add": {
+    "n": 979,
+    "start_rate": 96.7,
+    "mean_fpts": 6.66,
+    "median_fpts": 4.5,
+    "pps": 6.82,
+    "mean_next4": 20.22,
+    "mean_held": 16.7,
+    "mean_fpts_if_started": 6.82
+   }
+  },
+  "G": {
+   "waivers": {
+    "n": 1319,
+    "start_rate": 89.6,
+    "mean_fpts": 7.36,
+    "median_fpts": 6.5,
+    "pps": 8.21,
+    "mean_next4": 26.76,
+    "mean_held": 26.94,
+    "mean_fpts_if_started": 8.21
+   },
+   "lineup_snipe": {
+    "n": 34,
+    "start_rate": 100.0,
+    "mean_fpts": 6.21,
+    "median_fpts": 5.25,
+    "pps": 6.21,
+    "mean_next4": 22.62,
+    "mean_held": 13.04,
+    "mean_fpts_if_started": 6.21
+   },
+   "late_add": {
+    "n": 312,
+    "start_rate": 99.0,
+    "mean_fpts": 7.33,
+    "median_fpts": 6.25,
+    "pps": 7.4,
+    "mean_next4": 24.31,
+    "mean_held": 24.78,
+    "mean_fpts_if_started": 7.4
+   }
+  },
+  "M": {
+   "waivers": {
+    "n": 5475,
+    "start_rate": 65.3,
+    "mean_fpts": 5.51,
+    "median_fpts": 4.0,
+    "pps": 7.68,
+    "mean_next4": 19.99,
+    "mean_held": 21.12,
+    "mean_fpts_if_started": 7.68
+   },
+   "lineup_snipe": {
+    "n": 388,
+    "start_rate": 97.2,
+    "mean_fpts": 6.6,
+    "median_fpts": 5.0,
+    "pps": 6.72,
+    "mean_next4": 20.54,
+    "mean_held": 16.92,
+    "mean_fpts_if_started": 6.72
+   },
+   "late_add": {
+    "n": 1752,
+    "start_rate": 97.8,
+    "mean_fpts": 6.65,
+    "median_fpts": 5.0,
+    "pps": 6.78,
+    "mean_next4": 20.16,
+    "mean_held": 16.48,
+    "mean_fpts_if_started": 6.78
+   }
+  }
+ },
+ "by_phase": {
+  "early": {
+   "waivers": {
+    "n": 5459,
+    "start_rate": 66.0,
+    "mean_fpts": 5.86,
+    "median_fpts": 4.0,
+    "pps": 8.02,
+    "mean_next4": 21.84,
+    "mean_held": 30.06,
+    "mean_fpts_if_started": 8.02
+   },
+   "lineup_snipe": {
+    "n": 383,
+    "start_rate": 97.9,
+    "mean_fpts": 7.84,
+    "median_fpts": 6.0,
+    "pps": 7.98,
+    "mean_next4": 21.15,
+    "mean_held": 20.81,
+    "mean_fpts_if_started": 7.98
+   },
+   "late_add": {
+    "n": 1443,
+    "start_rate": 98.1,
+    "mean_fpts": 7.05,
+    "median_fpts": 5.25,
+    "pps": 7.17,
+    "mean_next4": 21.45,
+    "mean_held": 20.08,
+    "mean_fpts_if_started": 7.17
+   }
+  },
+  "mid": {
+   "waivers": {
+    "n": 5534,
+    "start_rate": 64.7,
+    "mean_fpts": 5.82,
+    "median_fpts": 4.25,
+    "pps": 8.14,
+    "mean_next4": 22.14,
+    "mean_held": 21.89,
+    "mean_fpts_if_started": 8.14
+   },
+   "lineup_snipe": {
+    "n": 376,
+    "start_rate": 97.6,
+    "mean_fpts": 7.33,
+    "median_fpts": 5.25,
+    "pps": 7.43,
+    "mean_next4": 20.7,
+    "mean_held": 11.98,
+    "mean_fpts_if_started": 7.43
+   },
+   "late_add": {
+    "n": 1719,
+    "start_rate": 97.7,
+    "mean_fpts": 7.08,
+    "median_fpts": 5.5,
+    "pps": 7.21,
+    "mean_next4": 22.57,
+    "mean_held": 20.05,
+    "mean_fpts_if_started": 7.21
+   }
+  },
+  "late": {
+   "waivers": {
+    "n": 5562,
+    "start_rate": 69.3,
+    "mean_fpts": 6.67,
+    "median_fpts": 5.0,
+    "pps": 8.93,
+    "mean_next4": 20.89,
+    "mean_held": 14.65,
+    "mean_fpts_if_started": 8.93
+   },
+   "lineup_snipe": {
+    "n": 316,
+    "start_rate": 97.5,
+    "mean_fpts": 8.11,
+    "median_fpts": 6.5,
+    "pps": 8.3,
+    "mean_next4": 20.69,
+    "mean_held": 13.51,
+    "mean_fpts_if_started": 8.3
+   },
+   "late_add": {
+    "n": 1696,
+    "start_rate": 98.2,
+    "mean_fpts": 7.09,
+    "median_fpts": 5.75,
+    "pps": 7.19,
+    "mean_next4": 19.54,
+    "mean_held": 15.12,
+    "mean_fpts_if_started": 7.19
+   }
+  }
+ },
+ "by_gameweek": {
+  "1": {
+   "waivers": {
+    "n": 402,
+    "start_rate": 60.0,
+    "mean_fpts": 6.28,
+    "median_fpts": 4.5,
+    "pps": 10.01,
+    "mean_next4": 21.06,
+    "mean_held": 27.1,
+    "mean_fpts_if_started": 10.01
+   },
+   "lineup_snipe": {
+    "n": 38,
+    "start_rate": 97.4,
+    "mean_fpts": 8.52,
+    "median_fpts": 5.5,
+    "pps": 8.75,
+    "mean_next4": 28.87,
+    "mean_held": 34.01,
+    "mean_fpts_if_started": 8.75
+   },
+   "late_add": {
+    "n": 118,
+    "start_rate": 97.5,
+    "mean_fpts": 7.21,
+    "median_fpts": 4.88,
+    "pps": 7.4,
+    "mean_next4": 20.63,
+    "mean_held": 19.96,
+    "mean_fpts_if_started": 7.4
+   }
+  },
+  "2": {
+   "waivers": {
+    "n": 517,
+    "start_rate": 71.8,
+    "mean_fpts": 6.21,
+    "median_fpts": 3.5,
+    "pps": 8.24,
+    "mean_next4": 22.39,
+    "mean_held": 33.39,
+    "mean_fpts_if_started": 8.24
+   },
+   "lineup_snipe": {
+    "n": 31,
+    "start_rate": 93.5,
+    "mean_fpts": 3.4,
+    "median_fpts": 2.5,
+    "pps": 3.54,
+    "mean_next4": 15.93,
+    "mean_held": 5.63,
+    "mean_fpts_if_started": 3.54
+   },
+   "late_add": {
+    "n": 77,
+    "start_rate": 97.4,
+    "mean_fpts": 5.76,
+    "median_fpts": 4.5,
+    "pps": 5.9,
+    "mean_next4": 20.88,
+    "mean_held": 21.63,
+    "mean_fpts_if_started": 5.9
+   }
+  },
+  "3": {
+   "waivers": {
+    "n": 484,
+    "start_rate": 69.4,
+    "mean_fpts": 3.83,
+    "median_fpts": 2.38,
+    "pps": 5.06,
+    "mean_next4": 19.5,
+    "mean_held": 20.44,
+    "mean_fpts_if_started": 5.06
+   },
+   "lineup_snipe": {
+    "n": 40,
+    "start_rate": 97.5,
+    "mean_fpts": 10.84,
+    "median_fpts": 12.25,
+    "pps": 10.99,
+    "mean_next4": 23.18,
+    "mean_held": 36.42,
+    "mean_fpts_if_started": 10.99
+   },
+   "late_add": {
+    "n": 100,
+    "start_rate": 99.0,
+    "mean_fpts": 6.54,
+    "median_fpts": 4.88,
+    "pps": 6.61,
+    "mean_next4": 21.36,
+    "mean_held": 8.44,
+    "mean_fpts_if_started": 6.61
+   }
+  },
+  "4": {
+   "waivers": {
+    "n": 726,
+    "start_rate": 57.6,
+    "mean_fpts": 5.63,
+    "median_fpts": 3.75,
+    "pps": 9.14,
+    "mean_next4": 19.7,
+    "mean_held": 46.48,
+    "mean_fpts_if_started": 9.14
+   },
+   "lineup_snipe": {
+    "n": 47,
+    "start_rate": 100.0,
+    "mean_fpts": 6.37,
+    "median_fpts": 6.0,
+    "pps": 6.37,
+    "mean_next4": 20.37,
+    "mean_held": 10.03,
+    "mean_fpts_if_started": 6.37
+   },
+   "late_add": {
+    "n": 158,
+    "start_rate": 98.7,
+    "mean_fpts": 5.86,
+    "median_fpts": 4.62,
+    "pps": 5.93,
+    "mean_next4": 21.18,
+    "mean_held": 18.91,
+    "mean_fpts_if_started": 5.93
+   }
+  },
+  "5": {
+   "waivers": {
+    "n": 417,
+    "start_rate": 67.4,
+    "mean_fpts": 6.33,
+    "median_fpts": 4.5,
+    "pps": 8.14,
+    "mean_next4": 21.86,
+    "mean_held": 27.68,
+    "mean_fpts_if_started": 8.14
+   },
+   "lineup_snipe": {
+    "n": 30,
+    "start_rate": 96.7,
+    "mean_fpts": 6.94,
+    "median_fpts": 4.62,
+    "pps": 7.18,
+    "mean_next4": 20.32,
+    "mean_held": 32.02,
+    "mean_fpts_if_started": 7.18
+   },
+   "late_add": {
+    "n": 144,
+    "start_rate": 98.6,
+    "mean_fpts": 6.5,
+    "median_fpts": 5.12,
+    "pps": 6.58,
+    "mean_next4": 19.27,
+    "mean_held": 23.76,
+    "mean_fpts_if_started": 6.58
+   }
+  },
+  "6": {
+   "waivers": {
+    "n": 441,
+    "start_rate": 70.5,
+    "mean_fpts": 5.91,
+    "median_fpts": 4.25,
+    "pps": 7.53,
+    "mean_next4": 21.48,
+    "mean_held": 33.7,
+    "mean_fpts_if_started": 7.53
+   },
+   "lineup_snipe": {
+    "n": 31,
+    "start_rate": 100.0,
+    "mean_fpts": 6.33,
+    "median_fpts": 5.0,
+    "pps": 6.33,
+    "mean_next4": 14.66,
+    "mean_held": 22.42,
+    "mean_fpts_if_started": 6.33
+   },
+   "late_add": {
+    "n": 112,
+    "start_rate": 99.1,
+    "mean_fpts": 6.59,
+    "median_fpts": 5.25,
+    "pps": 6.65,
+    "mean_next4": 21.62,
+    "mean_held": 20.35,
+    "mean_fpts_if_started": 6.65
+   }
+  },
+  "7": {
+   "waivers": {
+    "n": 488,
+    "start_rate": 67.6,
+    "mean_fpts": 5.89,
+    "median_fpts": 4.75,
+    "pps": 7.8,
+    "mean_next4": 24.38,
+    "mean_held": 30.86,
+    "mean_fpts_if_started": 7.8
+   },
+   "lineup_snipe": {
+    "n": 27,
+    "start_rate": 92.6,
+    "mean_fpts": 7.19,
+    "median_fpts": 4.25,
+    "pps": 7.66,
+    "mean_next4": 20.02,
+    "mean_held": 35.27,
+    "mean_fpts_if_started": 7.66
+   },
+   "late_add": {
+    "n": 140,
+    "start_rate": 97.9,
+    "mean_fpts": 8.01,
+    "median_fpts": 5.38,
+    "pps": 8.14,
+    "mean_next4": 22.94,
+    "mean_held": 20.39,
+    "mean_fpts_if_started": 8.14
+   }
+  },
+  "8": {
+   "waivers": {
+    "n": 398,
+    "start_rate": 62.3,
+    "mean_fpts": 5.59,
+    "median_fpts": 2.75,
+    "pps": 7.73,
+    "mean_next4": 21.91,
+    "mean_held": 25.98,
+    "mean_fpts_if_started": 7.73
+   },
+   "lineup_snipe": {
+    "n": 38,
+    "start_rate": 100.0,
+    "mean_fpts": 12.35,
+    "median_fpts": 8.25,
+    "pps": 12.35,
+    "mean_next4": 27.43,
+    "mean_held": 12.2,
+    "mean_fpts_if_started": 12.35
+   },
+   "late_add": {
+    "n": 144,
+    "start_rate": 99.3,
+    "mean_fpts": 7.43,
+    "median_fpts": 4.25,
+    "pps": 7.48,
+    "mean_next4": 25.22,
+    "mean_held": 25.86,
+    "mean_fpts_if_started": 7.48
+   }
+  },
+  "9": {
+   "waivers": {
+    "n": 426,
+    "start_rate": 65.7,
+    "mean_fpts": 5.85,
+    "median_fpts": 4.75,
+    "pps": 7.73,
+    "mean_next4": 20.67,
+    "mean_held": 22.56,
+    "mean_fpts_if_started": 7.73
+   },
+   "lineup_snipe": {
+    "n": 34,
+    "start_rate": 100.0,
+    "mean_fpts": 5.76,
+    "median_fpts": 5.75,
+    "pps": 5.76,
+    "mean_next4": 14.11,
+    "mean_held": 7.21,
+    "mean_fpts_if_started": 5.76
+   },
+   "late_add": {
+    "n": 124,
+    "start_rate": 97.6,
+    "mean_fpts": 7.2,
+    "median_fpts": 5.75,
+    "pps": 7.38,
+    "mean_next4": 16.82,
+    "mean_held": 15.65,
+    "mean_fpts_if_started": 7.38
+   }
+  },
+  "10": {
+   "waivers": {
+    "n": 368,
+    "start_rate": 64.9,
+    "mean_fpts": 5.68,
+    "median_fpts": 4.0,
+    "pps": 8.24,
+    "mean_next4": 22.55,
+    "mean_held": 30.6,
+    "mean_fpts_if_started": 8.24
+   },
+   "lineup_snipe": {
+    "n": 17,
+    "start_rate": 100.0,
+    "mean_fpts": 9.25,
+    "median_fpts": 8.25,
+    "pps": 9.25,
+    "mean_next4": 27.19,
+    "mean_held": 41.57,
+    "mean_fpts_if_started": 9.25
+   },
+   "late_add": {
+    "n": 96,
+    "start_rate": 97.9,
+    "mean_fpts": 8.0,
+    "median_fpts": 4.88,
+    "pps": 8.17,
+    "mean_next4": 24.88,
+    "mean_held": 29.77,
+    "mean_fpts_if_started": 8.17
+   }
+  },
+  "11": {
+   "waivers": {
+    "n": 392,
+    "start_rate": 80.6,
+    "mean_fpts": 8.67,
+    "median_fpts": 8.25,
+    "pps": 9.95,
+    "mean_next4": 27.76,
+    "mean_held": 31.49,
+    "mean_fpts_if_started": 9.95
+   },
+   "lineup_snipe": {
+    "n": 11,
+    "start_rate": 100.0,
+    "mean_fpts": 11.2,
+    "median_fpts": 11.75,
+    "pps": 11.2,
+    "mean_next4": 20.52,
+    "mean_held": 13.77,
+    "mean_fpts_if_started": 11.2
+   },
+   "late_add": {
+    "n": 79,
+    "start_rate": 97.5,
+    "mean_fpts": 9.14,
+    "median_fpts": 9.5,
+    "pps": 9.33,
+    "mean_next4": 23.04,
+    "mean_held": 23.48,
+    "mean_fpts_if_started": 9.33
+   }
+  },
+  "12": {
+   "waivers": {
+    "n": 400,
+    "start_rate": 57.8,
+    "mean_fpts": 4.97,
+    "median_fpts": 3.5,
+    "pps": 6.51,
+    "mean_next4": 20.59,
+    "mean_held": 18.17,
+    "mean_fpts_if_started": 6.51
+   },
+   "lineup_snipe": {
+    "n": 39,
+    "start_rate": 97.4,
+    "mean_fpts": 7.61,
+    "median_fpts": 11.25,
+    "pps": 7.82,
+    "mean_next4": 20.79,
+    "mean_held": 10.3,
+    "mean_fpts_if_started": 7.82
+   },
+   "late_add": {
+    "n": 151,
+    "start_rate": 96.7,
+    "mean_fpts": 6.94,
+    "median_fpts": 5.5,
+    "pps": 7.15,
+    "mean_next4": 20.46,
+    "mean_held": 14.53,
+    "mean_fpts_if_started": 7.15
+   }
+  },
+  "13": {
+   "waivers": {
+    "n": 446,
+    "start_rate": 60.5,
+    "mean_fpts": 5.14,
+    "median_fpts": 2.88,
+    "pps": 7.73,
+    "mean_next4": 21.76,
+    "mean_held": 23.13,
+    "mean_fpts_if_started": 7.73
+   },
+   "lineup_snipe": {
+    "n": 32,
+    "start_rate": 100.0,
+    "mean_fpts": 10.28,
+    "median_fpts": 13.0,
+    "pps": 10.28,
+    "mean_next4": 22.92,
+    "mean_held": 21.29,
+    "mean_fpts_if_started": 10.28
+   },
+   "late_add": {
+    "n": 112,
+    "start_rate": 96.4,
+    "mean_fpts": 8.57,
+    "median_fpts": 5.38,
+    "pps": 8.74,
+    "mean_next4": 22.66,
+    "mean_held": 17.96,
+    "mean_fpts_if_started": 8.74
+   }
+  },
+  "14": {
+   "waivers": {
+    "n": 406,
+    "start_rate": 69.0,
+    "mean_fpts": 5.88,
+    "median_fpts": 4.0,
+    "pps": 7.85,
+    "mean_next4": 22.67,
+    "mean_held": 25.22,
+    "mean_fpts_if_started": 7.85
+   },
+   "lineup_snipe": {
+    "n": 53,
+    "start_rate": 98.1,
+    "mean_fpts": 8.9,
+    "median_fpts": 8.0,
+    "pps": 8.94,
+    "mean_next4": 18.19,
+    "mean_held": 11.41,
+    "mean_fpts_if_started": 8.94
+   },
+   "late_add": {
+    "n": 163,
+    "start_rate": 99.4,
+    "mean_fpts": 6.96,
+    "median_fpts": 5.0,
+    "pps": 7.0,
+    "mean_next4": 19.25,
+    "mean_held": 24.3,
+    "mean_fpts_if_started": 7.0
+   }
+  },
+  "15": {
+   "waivers": {
+    "n": 359,
+    "start_rate": 64.6,
+    "mean_fpts": 5.76,
+    "median_fpts": 4.0,
+    "pps": 8.01,
+    "mean_next4": 22.7,
+    "mean_held": 27.89,
+    "mean_fpts_if_started": 8.01
+   },
+   "lineup_snipe": {
+    "n": 24,
+    "start_rate": 91.7,
+    "mean_fpts": 5.95,
+    "median_fpts": 5.25,
+    "pps": 6.49,
+    "mean_next4": 16.61,
+    "mean_held": 7.98,
+    "mean_fpts_if_started": 6.49
+   },
+   "late_add": {
+    "n": 119,
+    "start_rate": 100.0,
+    "mean_fpts": 6.71,
+    "median_fpts": 5.5,
+    "pps": 6.71,
+    "mean_next4": 21.93,
+    "mean_held": 15.78,
+    "mean_fpts_if_started": 6.71
+   }
+  },
+  "16": {
+   "waivers": {
+    "n": 460,
+    "start_rate": 54.8,
+    "mean_fpts": 5.03,
+    "median_fpts": 3.75,
+    "pps": 7.06,
+    "mean_next4": 20.56,
+    "mean_held": 18.98,
+    "mean_fpts_if_started": 7.06
+   },
+   "lineup_snipe": {
+    "n": 22,
+    "start_rate": 100.0,
+    "mean_fpts": 8.61,
+    "median_fpts": 4.12,
+    "pps": 8.61,
+    "mean_next4": 23.72,
+    "mean_held": 10.8,
+    "mean_fpts_if_started": 8.61
+   },
+   "late_add": {
+    "n": 108,
+    "start_rate": 95.4,
+    "mean_fpts": 5.44,
+    "median_fpts": 3.75,
+    "pps": 5.58,
+    "mean_next4": 19.96,
+    "mean_held": 19.78,
+    "mean_fpts_if_started": 5.58
+   }
+  },
+  "17": {
+   "waivers": {
+    "n": 417,
+    "start_rate": 69.3,
+    "mean_fpts": 5.45,
+    "median_fpts": 3.5,
+    "pps": 7.41,
+    "mean_next4": 20.85,
+    "mean_held": 18.29,
+    "mean_fpts_if_started": 7.41
+   },
+   "lineup_snipe": {
+    "n": 35,
+    "start_rate": 97.1,
+    "mean_fpts": 6.89,
+    "median_fpts": 3.5,
+    "pps": 7.09,
+    "mean_next4": 25.72,
+    "mean_held": 10.96,
+    "mean_fpts_if_started": 7.09
+   },
+   "late_add": {
+    "n": 112,
+    "start_rate": 100.0,
+    "mean_fpts": 7.48,
+    "median_fpts": 5.25,
+    "pps": 7.48,
+    "mean_next4": 25.58,
+    "mean_held": 23.27,
+    "mean_fpts_if_started": 7.48
+   }
+  },
+  "18": {
+   "waivers": {
+    "n": 321,
+    "start_rate": 69.8,
+    "mean_fpts": 6.43,
+    "median_fpts": 4.75,
+    "pps": 8.79,
+    "mean_next4": 24.57,
+    "mean_held": 18.38,
+    "mean_fpts_if_started": 8.79
+   },
+   "lineup_snipe": {
+    "n": 29,
+    "start_rate": 96.6,
+    "mean_fpts": 5.22,
+    "median_fpts": 4.25,
+    "pps": 5.31,
+    "mean_next4": 16.14,
+    "mean_held": 4.97,
+    "mean_fpts_if_started": 5.31
+   },
+   "late_add": {
+    "n": 157,
+    "start_rate": 98.7,
+    "mean_fpts": 6.11,
+    "median_fpts": 5.5,
+    "pps": 6.2,
+    "mean_next4": 21.65,
+    "mean_held": 16.48,
+    "mean_fpts_if_started": 6.2
+   }
+  },
+  "19": {
+   "waivers": {
+    "n": 430,
+    "start_rate": 69.3,
+    "mean_fpts": 6.35,
+    "median_fpts": 5.25,
+    "pps": 8.68,
+    "mean_next4": 22.17,
+    "mean_held": 19.62,
+    "mean_fpts_if_started": 8.68
+   },
+   "lineup_snipe": {
+    "n": 36,
+    "start_rate": 100.0,
+    "mean_fpts": 6.7,
+    "median_fpts": 4.75,
+    "pps": 6.7,
+    "mean_next4": 18.86,
+    "mean_held": 7.53,
+    "mean_fpts_if_started": 6.7
+   },
+   "late_add": {
+    "n": 183,
+    "start_rate": 98.4,
+    "mean_fpts": 7.35,
+    "median_fpts": 5.25,
+    "pps": 7.47,
+    "mean_next4": 23.29,
+    "mean_held": 22.92,
+    "mean_fpts_if_started": 7.47
+   }
+  },
+  "20": {
+   "waivers": {
+    "n": 389,
+    "start_rate": 68.4,
+    "mean_fpts": 7.69,
+    "median_fpts": 4.75,
+    "pps": 10.42,
+    "mean_next4": 23.8,
+    "mean_held": 26.81,
+    "mean_fpts_if_started": 10.42
+   },
+   "lineup_snipe": {
+    "n": 36,
+    "start_rate": 100.0,
+    "mean_fpts": 7.69,
+    "median_fpts": 6.25,
+    "pps": 7.69,
+    "mean_next4": 19.26,
+    "mean_held": 8.94,
+    "mean_fpts_if_started": 7.69
+   },
+   "late_add": {
+    "n": 131,
+    "start_rate": 93.9,
+    "mean_fpts": 6.14,
+    "median_fpts": 5.0,
+    "pps": 6.46,
+    "mean_next4": 24.09,
+    "mean_held": 20.71,
+    "mean_fpts_if_started": 6.46
+   }
+  },
+  "21": {
+   "waivers": {
+    "n": 405,
+    "start_rate": 64.9,
+    "mean_fpts": 5.94,
+    "median_fpts": 4.5,
+    "pps": 8.3,
+    "mean_next4": 22.54,
+    "mean_held": 30.35,
+    "mean_fpts_if_started": 8.3
+   },
+   "lineup_snipe": {
+    "n": 17,
+    "start_rate": 88.2,
+    "mean_fpts": 7.78,
+    "median_fpts": 4.5,
+    "pps": 8.35,
+    "mean_next4": 26.94,
+    "mean_held": 28.56,
+    "mean_fpts_if_started": 8.35
+   },
+   "late_add": {
+    "n": 153,
+    "start_rate": 96.7,
+    "mean_fpts": 6.43,
+    "median_fpts": 5.5,
+    "pps": 6.65,
+    "mean_next4": 21.27,
+    "mean_held": 20.56,
+    "mean_fpts_if_started": 6.65
+   }
+  },
+  "22": {
+   "waivers": {
+    "n": 516,
+    "start_rate": 65.7,
+    "mean_fpts": 6.0,
+    "median_fpts": 5.25,
+    "pps": 8.55,
+    "mean_next4": 21.07,
+    "mean_held": 20.68,
+    "mean_fpts_if_started": 8.55
+   },
+   "lineup_snipe": {
+    "n": 21,
+    "start_rate": 95.2,
+    "mean_fpts": 6.44,
+    "median_fpts": 6.0,
+    "pps": 6.76,
+    "mean_next4": 22.96,
+    "mean_held": 24.13,
+    "mean_fpts_if_started": 6.76
+   },
+   "late_add": {
+    "n": 117,
+    "start_rate": 97.4,
+    "mean_fpts": 7.87,
+    "median_fpts": 7.5,
+    "pps": 8.04,
+    "mean_next4": 24.44,
+    "mean_held": 22.27,
+    "mean_fpts_if_started": 8.04
+   }
+  },
+  "23": {
+   "waivers": {
+    "n": 453,
+    "start_rate": 62.0,
+    "mean_fpts": 5.84,
+    "median_fpts": 5.0,
+    "pps": 8.63,
+    "mean_next4": 21.67,
+    "mean_held": 18.15,
+    "mean_fpts_if_started": 8.63
+   },
+   "lineup_snipe": {
+    "n": 25,
+    "start_rate": 100.0,
+    "mean_fpts": 6.5,
+    "median_fpts": 6.25,
+    "pps": 6.5,
+    "mean_next4": 27.12,
+    "mean_held": 14.58,
+    "mean_fpts_if_started": 6.5
+   },
+   "late_add": {
+    "n": 101,
+    "start_rate": 97.0,
+    "mean_fpts": 8.04,
+    "median_fpts": 7.0,
+    "pps": 8.22,
+    "mean_next4": 25.42,
+    "mean_held": 17.86,
+    "mean_fpts_if_started": 8.22
+   }
+  },
+  "24": {
+   "waivers": {
+    "n": 552,
+    "start_rate": 67.6,
+    "mean_fpts": 5.83,
+    "median_fpts": 5.0,
+    "pps": 7.66,
+    "mean_next4": 23.55,
+    "mean_held": 22.83,
+    "mean_fpts_if_started": 7.66
+   },
+   "lineup_snipe": {
+    "n": 25,
+    "start_rate": 100.0,
+    "mean_fpts": 3.01,
+    "median_fpts": 1.0,
+    "pps": 3.01,
+    "mean_next4": 13.67,
+    "mean_held": 3.85,
+    "mean_fpts_if_started": 3.01
+   },
+   "late_add": {
+    "n": 124,
+    "start_rate": 98.4,
+    "mean_fpts": 7.21,
+    "median_fpts": 6.25,
+    "pps": 7.31,
+    "mean_next4": 24.39,
+    "mean_held": 18.41,
+    "mean_fpts_if_started": 7.31
+   }
+  },
+  "25": {
+   "waivers": {
+    "n": 380,
+    "start_rate": 55.5,
+    "mean_fpts": 4.49,
+    "median_fpts": 2.75,
+    "pps": 6.5,
+    "mean_next4": 20.58,
+    "mean_held": 14.89,
+    "mean_fpts_if_started": 6.5
+   },
+   "lineup_snipe": {
+    "n": 21,
+    "start_rate": 95.2,
+    "mean_fpts": 9.94,
+    "median_fpts": 9.5,
+    "pps": 9.75,
+    "mean_next4": 22.21,
+    "mean_held": 10.3,
+    "mean_fpts_if_started": 9.75
+   },
+   "late_add": {
+    "n": 139,
+    "start_rate": 97.8,
+    "mean_fpts": 8.1,
+    "median_fpts": 7.5,
+    "pps": 8.28,
+    "mean_next4": 21.35,
+    "mean_held": 18.27,
+    "mean_fpts_if_started": 8.28
+   }
+  },
+  "26": {
+   "waivers": {
+    "n": 388,
+    "start_rate": 81.4,
+    "mean_fpts": 9.52,
+    "median_fpts": 7.75,
+    "pps": 11.54,
+    "mean_next4": 25.31,
+    "mean_held": 20.92,
+    "mean_fpts_if_started": 11.54
+   },
+   "lineup_snipe": {
+    "n": 29,
+    "start_rate": 100.0,
+    "mean_fpts": 6.36,
+    "median_fpts": 4.25,
+    "pps": 6.36,
+    "mean_next4": 18.25,
+    "mean_held": 9.44,
+    "mean_fpts_if_started": 6.36
+   },
+   "late_add": {
+    "n": 101,
+    "start_rate": 99.0,
+    "mean_fpts": 6.36,
+    "median_fpts": 5.25,
+    "pps": 6.42,
+    "mean_next4": 20.83,
+    "mean_held": 25.94,
+    "mean_fpts_if_started": 6.42
+   }
+  },
+  "27": {
+   "waivers": {
+    "n": 454,
+    "start_rate": 61.7,
+    "mean_fpts": 5.12,
+    "median_fpts": 3.5,
+    "pps": 7.23,
+    "mean_next4": 20.62,
+    "mean_held": 18.67,
+    "mean_fpts_if_started": 7.23
+   },
+   "lineup_snipe": {
+    "n": 14,
+    "start_rate": 100.0,
+    "mean_fpts": 7.12,
+    "median_fpts": 6.5,
+    "pps": 7.12,
+    "mean_next4": 21.52,
+    "mean_held": 19.8,
+    "mean_fpts_if_started": 7.12
+   },
+   "late_add": {
+    "n": 90,
+    "start_rate": 98.9,
+    "mean_fpts": 6.56,
+    "median_fpts": 6.5,
+    "pps": 6.57,
+    "mean_next4": 20.97,
+    "mean_held": 16.76,
+    "mean_fpts_if_started": 6.57
+   }
+  },
+  "28": {
+   "waivers": {
+    "n": 372,
+    "start_rate": 63.7,
+    "mean_fpts": 6.46,
+    "median_fpts": 4.5,
+    "pps": 8.84,
+    "mean_next4": 22.87,
+    "mean_held": 15.72,
+    "mean_fpts_if_started": 8.84
+   },
+   "lineup_snipe": {
+    "n": 30,
+    "start_rate": 100.0,
+    "mean_fpts": 6.74,
+    "median_fpts": 4.25,
+    "pps": 6.74,
+    "mean_next4": 25.28,
+    "mean_held": 13.6,
+    "mean_fpts_if_started": 6.74
+   },
+   "late_add": {
+    "n": 117,
+    "start_rate": 95.7,
+    "mean_fpts": 6.33,
+    "median_fpts": 5.0,
+    "pps": 6.44,
+    "mean_next4": 22.71,
+    "mean_held": 17.3,
+    "mean_fpts_if_started": 6.44
+   }
+  },
+  "29": {
+   "waivers": {
+    "n": 407,
+    "start_rate": 62.7,
+    "mean_fpts": 5.33,
+    "median_fpts": 4.25,
+    "pps": 7.48,
+    "mean_next4": 23.06,
+    "mean_held": 15.19,
+    "mean_fpts_if_started": 7.48
+   },
+   "lineup_snipe": {
+    "n": 25,
+    "start_rate": 100.0,
+    "mean_fpts": 7.22,
+    "median_fpts": 7.5,
+    "pps": 7.22,
+    "mean_next4": 20.26,
+    "mean_held": 12.05,
+    "mean_fpts_if_started": 7.22
+   },
+   "late_add": {
+    "n": 178,
+    "start_rate": 97.8,
+    "mean_fpts": 6.73,
+    "median_fpts": 6.5,
+    "pps": 6.86,
+    "mean_next4": 22.76,
+    "mean_held": 16.26,
+    "mean_fpts_if_started": 6.86
+   }
+  },
+  "30": {
+   "waivers": {
+    "n": 399,
+    "start_rate": 62.9,
+    "mean_fpts": 6.25,
+    "median_fpts": 5.0,
+    "pps": 9.08,
+    "mean_next4": 21.44,
+    "mean_held": 14.23,
+    "mean_fpts_if_started": 9.08
+   },
+   "lineup_snipe": {
+    "n": 25,
+    "start_rate": 96.0,
+    "mean_fpts": 9.04,
+    "median_fpts": 7.0,
+    "pps": 9.42,
+    "mean_next4": 24.68,
+    "mean_held": 14.62,
+    "mean_fpts_if_started": 9.42
+   },
+   "late_add": {
+    "n": 134,
+    "start_rate": 98.5,
+    "mean_fpts": 8.39,
+    "median_fpts": 8.25,
+    "pps": 8.5,
+    "mean_next4": 30.21,
+    "mean_held": 22.52,
+    "mean_fpts_if_started": 8.5
+   }
+  },
+  "31": {
+   "waivers": {
+    "n": 439,
+    "start_rate": 75.6,
+    "mean_fpts": 7.74,
+    "median_fpts": 6.5,
+    "pps": 9.76,
+    "mean_next4": 23.97,
+    "mean_held": 17.28,
+    "mean_fpts_if_started": 9.76
+   },
+   "lineup_snipe": {
+    "n": 36,
+    "start_rate": 94.4,
+    "mean_fpts": 9.33,
+    "median_fpts": 8.75,
+    "pps": 9.81,
+    "mean_next4": 28.27,
+    "mean_held": 17.01,
+    "mean_fpts_if_started": 9.81
+   },
+   "late_add": {
+    "n": 135,
+    "start_rate": 97.0,
+    "mean_fpts": 9.97,
+    "median_fpts": 8.75,
+    "pps": 10.27,
+    "mean_next4": 25.44,
+    "mean_held": 18.73,
+    "mean_fpts_if_started": 10.27
+   }
+  },
+  "32": {
+   "waivers": {
+    "n": 537,
+    "start_rate": 71.1,
+    "mean_fpts": 6.74,
+    "median_fpts": 4.25,
+    "pps": 8.73,
+    "mean_next4": 23.95,
+    "mean_held": 17.24,
+    "mean_fpts_if_started": 8.73
+   },
+   "lineup_snipe": {
+    "n": 27,
+    "start_rate": 100.0,
+    "mean_fpts": 11.94,
+    "median_fpts": 10.5,
+    "pps": 11.94,
+    "mean_next4": 28.54,
+    "mean_held": 19.63,
+    "mean_fpts_if_started": 11.94
+   },
+   "late_add": {
+    "n": 125,
+    "start_rate": 100.0,
+    "mean_fpts": 8.19,
+    "median_fpts": 7.5,
+    "pps": 8.19,
+    "mean_next4": 25.7,
+    "mean_held": 22.84,
+    "mean_fpts_if_started": 8.19
+   }
+  },
+  "33": {
+   "waivers": {
+    "n": 346,
+    "start_rate": 78.0,
+    "mean_fpts": 10.13,
+    "median_fpts": 8.0,
+    "pps": 12.11,
+    "mean_next4": 23.32,
+    "mean_held": 16.46,
+    "mean_fpts_if_started": 12.11
+   },
+   "lineup_snipe": {
+    "n": 18,
+    "start_rate": 83.3,
+    "mean_fpts": 4.76,
+    "median_fpts": 3.75,
+    "pps": 5.72,
+    "mean_next4": 10.36,
+    "mean_held": 7.39,
+    "mean_fpts_if_started": 5.72
+   },
+   "late_add": {
+    "n": 88,
+    "start_rate": 94.3,
+    "mean_fpts": 4.89,
+    "median_fpts": 3.62,
+    "pps": 5.19,
+    "mean_next4": 16.79,
+    "mean_held": 10.97,
+    "mean_fpts_if_started": 5.19
+   }
+  },
+  "34": {
+   "waivers": {
+    "n": 623,
+    "start_rate": 80.6,
+    "mean_fpts": 7.8,
+    "median_fpts": 6.75,
+    "pps": 9.39,
+    "mean_next4": 24.91,
+    "mean_held": 16.47,
+    "mean_fpts_if_started": 9.39
+   },
+   "lineup_snipe": {
+    "n": 19,
+    "start_rate": 94.7,
+    "mean_fpts": 7.46,
+    "median_fpts": 6.5,
+    "pps": 7.64,
+    "mean_next4": 23.75,
+    "mean_held": 15.84,
+    "mean_fpts_if_started": 7.64
+   },
+   "late_add": {
+    "n": 168,
+    "start_rate": 99.4,
+    "mean_fpts": 6.9,
+    "median_fpts": 5.62,
+    "pps": 6.94,
+    "mean_next4": 22.1,
+    "mean_held": 13.67,
+    "mean_fpts_if_started": 6.94
+   }
+  },
+  "35": {
+   "waivers": {
+    "n": 507,
+    "start_rate": 69.6,
+    "mean_fpts": 5.39,
+    "median_fpts": 3.5,
+    "pps": 7.03,
+    "mean_next4": 22.19,
+    "mean_held": 12.2,
+    "mean_fpts_if_started": 7.03
+   },
+   "lineup_snipe": {
+    "n": 21,
+    "start_rate": 100.0,
+    "mean_fpts": 4.29,
+    "median_fpts": 4.5,
+    "pps": 4.29,
+    "mean_next4": 12.99,
+    "mean_held": 9.07,
+    "mean_fpts_if_started": 4.29
+   },
+   "late_add": {
+    "n": 133,
+    "start_rate": 97.7,
+    "mean_fpts": 6.54,
+    "median_fpts": 6.0,
+    "pps": 6.61,
+    "mean_next4": 18.1,
+    "mean_held": 12.11,
+    "mean_fpts_if_started": 6.61
+   }
+  },
+  "36": {
+   "waivers": {
+    "n": 405,
+    "start_rate": 66.2,
+    "mean_fpts": 5.98,
+    "median_fpts": 4.5,
+    "pps": 8.28,
+    "mean_next4": 15.91,
+    "mean_held": 9.96,
+    "mean_fpts_if_started": 8.28
+   },
+   "lineup_snipe": {
+    "n": 30,
+    "start_rate": 96.7,
+    "mean_fpts": 15.99,
+    "median_fpts": 8.38,
+    "pps": 16.54,
+    "mean_next4": 26.98,
+    "mean_held": 21.84,
+    "mean_fpts_if_started": 16.54
+   },
+   "late_add": {
+    "n": 87,
+    "start_rate": 97.7,
+    "mean_fpts": 8.72,
+    "median_fpts": 5.0,
+    "pps": 8.89,
+    "mean_next4": 17.05,
+    "mean_held": 11.93,
+    "mean_fpts_if_started": 8.89
+   }
+  },
+  "37": {
+   "waivers": {
+    "n": 407,
+    "start_rate": 53.6,
+    "mean_fpts": 4.73,
+    "median_fpts": 2.75,
+    "pps": 7.96,
+    "mean_next4": 10.57,
+    "mean_held": 6.83,
+    "mean_fpts_if_started": 7.96
+   },
+   "lineup_snipe": {
+    "n": 20,
+    "start_rate": 100.0,
+    "mean_fpts": 4.59,
+    "median_fpts": 3.5,
+    "pps": 4.59,
+    "mean_next4": 9.66,
+    "mean_held": 6.64,
+    "mean_fpts_if_started": 4.59
+   },
+   "late_add": {
+    "n": 116,
+    "start_rate": 99.1,
+    "mean_fpts": 5.0,
+    "median_fpts": 4.0,
+    "pps": 5.04,
+    "mean_next4": 9.59,
+    "mean_held": 6.92,
+    "mean_fpts_if_started": 5.04
+   }
+  },
+  "38": {
+   "waivers": {
+    "n": 278,
+    "start_rate": 68.7,
+    "mean_fpts": 5.69,
+    "median_fpts": 4.5,
+    "pps": 7.8,
+    "mean_next4": 5.69,
+    "mean_held": 4.94,
+    "mean_fpts_if_started": 7.8
+   },
+   "lineup_snipe": {
+    "n": 22,
+    "start_rate": 100.0,
+    "mean_fpts": 5.62,
+    "median_fpts": 5.38,
+    "pps": 5.62,
+    "mean_next4": 5.62,
+    "mean_held": 3.95,
+    "mean_fpts_if_started": 5.62
+   },
+   "late_add": {
+    "n": 224,
+    "start_rate": 99.6,
+    "mean_fpts": 6.94,
+    "median_fpts": 6.0,
+    "pps": 6.97,
+    "mean_next4": 6.94,
+    "mean_held": 6.61,
+    "mean_fpts_if_started": 6.97
+   }
+  }
+ },
+ "by_league": {
+  "community": {
+   "waivers": {
+    "n": 6207,
+    "start_rate": 66.0,
+    "mean_fpts": 6.06,
+    "median_fpts": 4.25,
+    "pps": 8.36,
+    "mean_next4": 21.28,
+    "mean_held": 20.94,
+    "mean_fpts_if_started": 8.36
+   },
+   "lineup_snipe": {
+    "n": 453,
+    "start_rate": 96.5,
+    "mean_fpts": 7.28,
+    "median_fpts": 5.25,
+    "pps": 7.52,
+    "mean_next4": 20.08,
+    "mean_held": 12.83,
+    "mean_fpts_if_started": 7.52
+   },
+   "late_add": {
+    "n": 1716,
+    "start_rate": 97.7,
+    "mean_fpts": 7.02,
+    "median_fpts": 5.5,
+    "pps": 7.16,
+    "mean_next4": 20.98,
+    "mean_held": 17.05,
+    "mean_fpts_if_started": 7.16
+   }
+  },
+  "igl": {
+   "waivers": {
+    "n": 10348,
+    "start_rate": 67.1,
+    "mean_fpts": 6.15,
+    "median_fpts": 4.25,
+    "pps": 8.39,
+    "mean_next4": 21.82,
+    "mean_held": 22.87,
+    "mean_fpts_if_started": 8.39
+   },
+   "lineup_snipe": {
+    "n": 622,
+    "start_rate": 98.6,
+    "mean_fpts": 8.08,
+    "median_fpts": 6.25,
+    "pps": 8.14,
+    "mean_next4": 21.42,
+    "mean_held": 17.58,
+    "mean_fpts_if_started": 8.14
+   },
+   "late_add": {
+    "n": 3142,
+    "start_rate": 98.2,
+    "mean_fpts": 7.1,
+    "median_fpts": 5.5,
+    "pps": 7.21,
+    "mean_next4": 21.29,
+    "mean_held": 19.04,
+    "mean_fpts_if_started": 7.21
+   }
+  }
+ },
+ "by_claim_type": {
+  "FA": {
+   "waivers": {
+    "n": 8638,
+    "start_rate": 65.4,
+    "mean_fpts": 5.85,
+    "median_fpts": 4.0,
+    "pps": 8.12,
+    "mean_next4": 20.87,
+    "mean_held": 17.35,
+    "mean_fpts_if_started": 8.12
+   },
+   "lineup_snipe": {
+    "n": 1075,
+    "start_rate": 97.7,
+    "mean_fpts": 7.74,
+    "median_fpts": 6.0,
+    "pps": 7.88,
+    "mean_next4": 20.86,
+    "mean_held": 15.58,
+    "mean_fpts_if_started": 7.88
+   },
+   "late_add": {
+    "n": 4858,
+    "start_rate": 98.0,
+    "mean_fpts": 7.07,
+    "median_fpts": 5.5,
+    "pps": 7.19,
+    "mean_next4": 21.18,
+    "mean_held": 18.34,
+    "mean_fpts_if_started": 7.19
+   }
+  },
+  "WW": {
+   "waivers": {
+    "n": 7917,
+    "start_rate": 68.0,
+    "mean_fpts": 6.41,
+    "median_fpts": 4.5,
+    "pps": 8.65,
+    "mean_next4": 22.44,
+    "mean_held": 27.39,
+    "mean_fpts_if_started": 8.65
+   },
+   "lineup_snipe": null,
+   "late_add": null
+  }
+ },
+ "missed_live_period": {
+  "waivers": {
+   "n": 10389,
+   "start_rate": 67.4,
+   "mean_fpts": 6.28,
+   "median_fpts": 4.5,
+   "pps": 8.56,
+   "mean_next4": 22.0,
+   "mean_held": 23.71,
+   "mean_fpts_if_started": 8.56
+  },
+  "lineup_snipe": {
+   "n": 87,
+   "start_rate": 97.7,
+   "mean_fpts": 5.9,
+   "median_fpts": 4.25,
+   "pps": 5.99,
+   "mean_next4": 23.14,
+   "mean_held": 11.96,
+   "mean_fpts_if_started": 5.99
+  },
+  "late_add": {
+   "n": 271,
+   "start_rate": 98.2,
+   "mean_fpts": 6.56,
+   "median_fpts": 5.5,
+   "pps": 6.68,
+   "mean_next4": 23.07,
+   "mean_held": 19.28,
+   "mean_fpts_if_started": 6.68
+  }
+ },
+ "histogram": [
+  {
+   "from": 0,
+   "to": 5,
+   "total": 141,
+   "waivers": 0,
+   "lineup_snipe": 0,
+   "late_add": 141
+  },
+  {
+   "from": 5,
+   "to": 10,
+   "total": 175,
+   "waivers": 0,
+   "lineup_snipe": 0,
+   "late_add": 175
+  },
+  {
+   "from": 10,
+   "to": 15,
+   "total": 185,
+   "waivers": 0,
+   "lineup_snipe": 0,
+   "late_add": 185
+  },
+  {
+   "from": 15,
+   "to": 20,
+   "total": 154,
+   "waivers": 0,
+   "lineup_snipe": 0,
+   "late_add": 154
+  },
+  {
+   "from": 20,
+   "to": 30,
+   "total": 349,
+   "waivers": 0,
+   "lineup_snipe": 0,
+   "late_add": 349
+  },
+  {
+   "from": 30,
+   "to": 40,
+   "total": 373,
+   "waivers": 0,
+   "lineup_snipe": 0,
+   "late_add": 373
+  },
+  {
+   "from": 40,
+   "to": 50,
+   "total": 495,
+   "waivers": 0,
+   "lineup_snipe": 0,
+   "late_add": 495
+  },
+  {
+   "from": 50,
+   "to": 60,
+   "total": 895,
+   "waivers": 0,
+   "lineup_snipe": 0,
+   "late_add": 895
+  },
+  {
+   "from": 60,
+   "to": 65,
+   "total": 728,
+   "waivers": 0,
+   "lineup_snipe": 0,
+   "late_add": 728
+  },
+  {
+   "from": 65,
+   "to": 70,
+   "total": 1117,
+   "waivers": 0,
+   "lineup_snipe": 0,
+   "late_add": 1117
+  },
+  {
+   "from": 70,
+   "to": 75,
+   "total": 1241,
+   "waivers": 0,
+   "lineup_snipe": 995,
+   "late_add": 246
+  },
+  {
+   "from": 75,
+   "to": 80,
+   "total": 126,
+   "waivers": 46,
+   "lineup_snipe": 80,
+   "late_add": 0
+  },
+  {
+   "from": 80,
+   "to": 90,
+   "total": 55,
+   "waivers": 55,
+   "lineup_snipe": 0,
+   "late_add": 0
+  },
+  {
+   "from": 90,
+   "to": 120,
+   "total": 129,
+   "waivers": 129,
+   "lineup_snipe": 0,
+   "late_add": 0
+  },
+  {
+   "from": 120,
+   "to": 180,
+   "total": 254,
+   "waivers": 254,
+   "lineup_snipe": 0,
+   "late_add": 0
+  },
+  {
+   "from": 180,
+   "to": 360,
+   "total": 760,
+   "waivers": 760,
+   "lineup_snipe": 0,
+   "late_add": 0
+  },
+  {
+   "from": 360,
+   "to": 720,
+   "total": 310,
+   "waivers": 310,
+   "lineup_snipe": 0,
+   "late_add": 0
+  },
+  {
+   "from": 720,
+   "to": 1440,
+   "total": 1550,
+   "waivers": 1550,
+   "lineup_snipe": 0,
+   "late_add": 0
+  },
+  {
+   "from": 1440,
+   "to": 2880,
+   "total": 4822,
+   "waivers": 4822,
+   "lineup_snipe": 0,
+   "late_add": 0
+  },
+  {
+   "from": 2880,
+   "to": 4320,
+   "total": 5766,
+   "waivers": 5766,
+   "lineup_snipe": 0,
+   "late_add": 0
+  },
+  {
+   "from": 4320,
+   "to": 10080,
+   "total": 2128,
+   "waivers": 2128,
+   "lineup_snipe": 0,
+   "late_add": 0
+  },
+  {
+   "from": 10080,
+   "to": null,
+   "total": 735,
+   "waivers": 735,
+   "lineup_snipe": 0,
+   "late_add": 0
+  }
+ ],
+ "lineup_cliff": {
+  "after_announcement": 1241,
+  "before_announcement": 126,
+  "ratio": 9.8
+ },
+ "best_pickups": [
+  {
+   "player": "Jurrien Timber",
+   "position": "D",
+   "club": "ARS",
+   "gameweek": 2,
+   "gw_fpts": 45.0,
+   "next4_fpts": 70.75,
+   "started": true,
+   "teams": 14,
+   "bucket": "waivers",
+   "minutes_before_ko": 214.0
+  },
+  {
+   "player": "Piero Hincapi\u00e9",
+   "position": "D",
+   "club": "ARS",
+   "gameweek": 26,
+   "gw_fpts": 43.25,
+   "next4_fpts": 65.25,
+   "started": true,
+   "teams": 11,
+   "bucket": "waivers",
+   "minutes_before_ko": 8705.0
+  },
+  {
+   "player": "Sean Longstaff",
+   "position": "M",
+   "club": "LEE",
+   "gameweek": 6,
+   "gw_fpts": 39.75,
+   "next4_fpts": 77.5,
+   "started": true,
+   "teams": 1,
+   "bucket": "late_add",
+   "minutes_before_ko": 65.0
+  },
+  {
+   "player": "Konstantinos Mavropanos",
+   "position": "D",
+   "club": "WHU",
+   "gameweek": 32,
+   "gw_fpts": 39.25,
+   "next4_fpts": 62.0,
+   "started": true,
+   "teams": 7,
+   "bucket": "late_add",
+   "minutes_before_ko": 27.0
+  },
+  {
+   "player": "Maxim De Cuyper",
+   "position": "D",
+   "club": "BHA",
+   "gameweek": 36,
+   "gw_fpts": 36.25,
+   "next4_fpts": 53.5,
+   "started": true,
+   "teams": 16,
+   "bucket": "late_add",
+   "minutes_before_ko": 63.0
+  },
+  {
+   "player": "Micky van de Ven",
+   "position": "D",
+   "club": "TOT",
+   "gameweek": 9,
+   "gw_fpts": 35.75,
+   "next4_fpts": 38.5,
+   "started": true,
+   "teams": 2,
+   "bucket": "late_add",
+   "minutes_before_ko": 70.0
+  },
+  {
+   "player": "Beto",
+   "position": "F",
+   "club": "EVE",
+   "gameweek": 31,
+   "gw_fpts": 35.5,
+   "next4_fpts": 66.25,
+   "started": true,
+   "teams": 8,
+   "bucket": "late_add",
+   "minutes_before_ko": 48.0
+  },
+  {
+   "player": "Jose Sa",
+   "position": "G",
+   "club": "WOL",
+   "gameweek": 26,
+   "gw_fpts": 35.5,
+   "next4_fpts": 73.75,
+   "started": true,
+   "teams": 8,
+   "bucket": "waivers",
+   "minutes_before_ko": 10158.0
+  },
+  {
+   "player": "Diego Gomez",
+   "position": "M",
+   "club": "BHA",
+   "gameweek": 10,
+   "gw_fpts": 35.25,
+   "next4_fpts": 66.5,
+   "started": true,
+   "teams": 8,
+   "bucket": "late_add",
+   "minutes_before_ko": 2.0
+  },
+  {
+   "player": "Patrick Dorgu",
+   "position": "D",
+   "club": "MUN",
+   "gameweek": 38,
+   "gw_fpts": 35.0,
+   "next4_fpts": 35.0,
+   "started": true,
+   "teams": 3,
+   "bucket": "waivers",
+   "minutes_before_ko": 4380.0
+  },
+  {
+   "player": "Mikkel Damsgaard",
+   "position": "M",
+   "club": "BRF",
+   "gameweek": 28,
+   "gw_fpts": 35.0,
+   "next4_fpts": 43.5,
+   "started": true,
+   "teams": 7,
+   "bucket": "lineup_snipe",
+   "minutes_before_ko": 75.0
+  },
+  {
+   "player": "Abdukodir Khusanov",
+   "position": "D",
+   "club": "MCI",
+   "gameweek": 33,
+   "gw_fpts": 34.5,
+   "next4_fpts": 49.25,
+   "started": true,
+   "teams": 15,
+   "bucket": "late_add",
+   "minutes_before_ko": 68.0
+  },
+  {
+   "player": "Malo Gusto",
+   "position": "D",
+   "club": "CHE",
+   "gameweek": 16,
+   "gw_fpts": 34.0,
+   "next4_fpts": 34.25,
+   "started": true,
+   "teams": 3,
+   "bucket": "lineup_snipe",
+   "minutes_before_ko": 71.0
+  },
+  {
+   "player": "Harry Wilson",
+   "position": "M",
+   "club": "FUL",
+   "gameweek": 16,
+   "gw_fpts": 33.75,
+   "next4_fpts": 56.25,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 1590.0
+  },
+  {
+   "player": "Callum Hudson-Odoi",
+   "position": "F",
+   "club": "NOT",
+   "gameweek": 16,
+   "gw_fpts": 33.5,
+   "next4_fpts": 44.5,
+   "started": true,
+   "teams": 12,
+   "bucket": "late_add",
+   "minutes_before_ko": 63.0
+  },
+  {
+   "player": "Danny Ballard",
+   "position": "D",
+   "club": "SUN",
+   "gameweek": 1,
+   "gw_fpts": 33.25,
+   "next4_fpts": 36.75,
+   "started": true,
+   "teams": 2,
+   "bucket": "waivers",
+   "minutes_before_ko": 2875.0
+  },
+  {
+   "player": "Malick Thiaw",
+   "position": "D",
+   "club": "NEW",
+   "gameweek": 13,
+   "gw_fpts": 32.25,
+   "next4_fpts": 60.0,
+   "started": true,
+   "teams": 3,
+   "bucket": "waivers",
+   "minutes_before_ko": 199.0
+  },
+  {
+   "player": "Noah Okafor",
+   "position": "F",
+   "club": "LEE",
+   "gameweek": 33,
+   "gw_fpts": 31.25,
+   "next4_fpts": 47.75,
+   "started": true,
+   "teams": 11,
+   "bucket": "waivers",
+   "minutes_before_ko": 2880.0
+  },
+  {
+   "player": "Cristian Romero",
+   "position": "D",
+   "club": "TOT",
+   "gameweek": 14,
+   "gw_fpts": 31.25,
+   "next4_fpts": 45.0,
+   "started": true,
+   "teams": 2,
+   "bucket": "waivers",
+   "minutes_before_ko": 1546.0
+  },
+  {
+   "player": "Maxim De Cuyper",
+   "position": "D",
+   "club": "BHA",
+   "gameweek": 13,
+   "gw_fpts": 31.0,
+   "next4_fpts": 51.5,
+   "started": true,
+   "teams": 6,
+   "bucket": "late_add",
+   "minutes_before_ko": 39.0
+  },
+  {
+   "player": "Taiwo Awoniyi",
+   "position": "F",
+   "club": "NOT",
+   "gameweek": 35,
+   "gw_fpts": 30.5,
+   "next4_fpts": 34.5,
+   "started": true,
+   "teams": 3,
+   "bucket": "late_add",
+   "minutes_before_ko": 3.0
+  },
+  {
+   "player": "Danny Welbeck",
+   "position": "F",
+   "club": "BHA",
+   "gameweek": 8,
+   "gw_fpts": 30.5,
+   "next4_fpts": 64.25,
+   "started": true,
+   "teams": 3,
+   "bucket": "late_add",
+   "minutes_before_ko": 61.0
+  },
+  {
+   "player": "Keane Lewis-Potter",
+   "position": "M",
+   "club": "BRF",
+   "gameweek": 17,
+   "gw_fpts": 30.0,
+   "next4_fpts": 40.5,
+   "started": true,
+   "teams": 9,
+   "bucket": "late_add",
+   "minutes_before_ko": 36.0
+  },
+  {
+   "player": "Phil Foden",
+   "position": "M",
+   "club": "MCI",
+   "gameweek": 36,
+   "gw_fpts": 29.5,
+   "next4_fpts": 36.5,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 8940.0
+  },
+  {
+   "player": "James Justin",
+   "position": "D",
+   "club": "LEE",
+   "gameweek": 33,
+   "gw_fpts": 29.5,
+   "next4_fpts": 50.0,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 2835.0
+  },
+  {
+   "player": "Josh Acheampong",
+   "position": "D",
+   "club": "CHE",
+   "gameweek": 8,
+   "gw_fpts": 29.25,
+   "next4_fpts": 34.0,
+   "started": true,
+   "teams": 4,
+   "bucket": "late_add",
+   "minutes_before_ko": 46.0
+  },
+  {
+   "player": "Brenden Aaronson",
+   "position": "M",
+   "club": "LEE",
+   "gameweek": 21,
+   "gw_fpts": 29.0,
+   "next4_fpts": 43.5,
+   "started": true,
+   "teams": 2,
+   "bucket": "waivers",
+   "minutes_before_ko": 3121.0
+  },
+  {
+   "player": "Harvey Barnes",
+   "position": "M",
+   "club": "NEW",
+   "gameweek": 21,
+   "gw_fpts": 28.75,
+   "next4_fpts": 34.25,
+   "started": true,
+   "teams": 8,
+   "bucket": "waivers",
+   "minutes_before_ko": 2773.0
+  },
+  {
+   "player": "Michael Kayode",
+   "position": "D",
+   "club": "BRF",
+   "gameweek": 8,
+   "gw_fpts": 28.75,
+   "next4_fpts": 56.5,
+   "started": true,
+   "teams": 8,
+   "bucket": "late_add",
+   "minutes_before_ko": 47.0
+  },
+  {
+   "player": "David Brooks",
+   "position": "M",
+   "club": "BOU",
+   "gameweek": 19,
+   "gw_fpts": 28.5,
+   "next4_fpts": 38.0,
+   "started": true,
+   "teams": 9,
+   "bucket": "late_add",
+   "minutes_before_ko": 9.0
+  },
+  {
+   "player": "Noni Madueke",
+   "position": "M",
+   "club": "ARS",
+   "gameweek": 24,
+   "gw_fpts": 28.25,
+   "next4_fpts": 49.75,
+   "started": true,
+   "teams": 5,
+   "bucket": "late_add",
+   "minutes_before_ko": 13.0
+  },
+  {
+   "player": "Richarlison",
+   "position": "F",
+   "club": "TOT",
+   "gameweek": 1,
+   "gw_fpts": 28.25,
+   "next4_fpts": 45.25,
+   "started": true,
+   "teams": 7,
+   "bucket": "lineup_snipe",
+   "minutes_before_ko": 73.0
+  },
+  {
+   "player": "Harvey Barnes",
+   "position": "M",
+   "club": "NEW",
+   "gameweek": 12,
+   "gw_fpts": 28.0,
+   "next4_fpts": 38.25,
+   "started": true,
+   "teams": 3,
+   "bucket": "late_add",
+   "minutes_before_ko": 66.0
+  },
+  {
+   "player": "Eberechi Eze",
+   "position": "M",
+   "club": "ARS",
+   "gameweek": 27,
+   "gw_fpts": 28.0,
+   "next4_fpts": 42.5,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 2970.0
+  },
+  {
+   "player": "Valentin Castellanos",
+   "position": "F",
+   "club": "WHU",
+   "gameweek": 32,
+   "gw_fpts": 27.75,
+   "next4_fpts": 43.0,
+   "started": true,
+   "teams": 2,
+   "bucket": "late_add",
+   "minutes_before_ko": 28.0
+  },
+  {
+   "player": "Ben White",
+   "position": "D",
+   "club": "ARS",
+   "gameweek": 14,
+   "gw_fpts": 27.5,
+   "next4_fpts": 34.25,
+   "started": true,
+   "teams": 17,
+   "bucket": "late_add",
+   "minutes_before_ko": 34.0
+  },
+  {
+   "player": "Donyell Malen",
+   "position": "F",
+   "club": "AVL",
+   "gameweek": 7,
+   "gw_fpts": 27.5,
+   "next4_fpts": 29.0,
+   "started": true,
+   "teams": 13,
+   "bucket": "late_add",
+   "minutes_before_ko": 32.0
+  },
+  {
+   "player": "Neco Williams",
+   "position": "D",
+   "club": "NOT",
+   "gameweek": 26,
+   "gw_fpts": 27.5,
+   "next4_fpts": 42.75,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 3150.0
+  },
+  {
+   "player": "Riccardo Calafiori",
+   "position": "D",
+   "club": "ARS",
+   "gameweek": 2,
+   "gw_fpts": 27.0,
+   "next4_fpts": 46.5,
+   "started": true,
+   "teams": 3,
+   "bucket": "waivers",
+   "minutes_before_ko": 1590.0
+  },
+  {
+   "player": "Jean-Philippe Mateta",
+   "position": "F",
+   "club": "CRY",
+   "gameweek": 32,
+   "gw_fpts": 26.75,
+   "next4_fpts": 34.5,
+   "started": false,
+   "teams": 6,
+   "bucket": "waivers",
+   "minutes_before_ko": 2820.0
+  },
+  {
+   "player": "Wilson Odobert",
+   "position": "F",
+   "club": "TOT",
+   "gameweek": 23,
+   "gw_fpts": 26.75,
+   "next4_fpts": 34.5,
+   "started": true,
+   "teams": 2,
+   "bucket": "waivers",
+   "minutes_before_ko": 2444.0
+  },
+  {
+   "player": "Igor Jesus",
+   "position": "F",
+   "club": "NOT",
+   "gameweek": 34,
+   "gw_fpts": 26.5,
+   "next4_fpts": 52.0,
+   "started": true,
+   "teams": 14,
+   "bucket": "late_add",
+   "minutes_before_ko": 40.0
+  },
+  {
+   "player": "Matheus Nunes",
+   "position": "D",
+   "club": "MCI",
+   "gameweek": 11,
+   "gw_fpts": 26.5,
+   "next4_fpts": 44.75,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 221.0
+  },
+  {
+   "player": "Casemiro",
+   "position": "M",
+   "club": "MUN",
+   "gameweek": 10,
+   "gw_fpts": 26.25,
+   "next4_fpts": 41.0,
+   "started": true,
+   "teams": 13,
+   "bucket": "late_add",
+   "minutes_before_ko": 13.0
+  },
+  {
+   "player": "Joshua King",
+   "position": "M",
+   "club": "FUL",
+   "gameweek": 31,
+   "gw_fpts": 26.0,
+   "next4_fpts": 31.25,
+   "started": true,
+   "teams": 5,
+   "bucket": "late_add",
+   "minutes_before_ko": 50.0
+  },
+  {
+   "player": "Enzo Le F\u00e9e",
+   "position": "M",
+   "club": "SUN",
+   "gameweek": 13,
+   "gw_fpts": 26.0,
+   "next4_fpts": 42.5,
+   "started": true,
+   "teams": 5,
+   "bucket": "late_add",
+   "minutes_before_ko": 11.0
+  },
+  {
+   "player": "Bernardo Silva",
+   "position": "M",
+   "club": "MCI",
+   "gameweek": 33,
+   "gw_fpts": 25.75,
+   "next4_fpts": 40.25,
+   "started": true,
+   "teams": 2,
+   "bucket": "waivers",
+   "minutes_before_ko": 4410.0
+  },
+  {
+   "player": "Mikel Merino",
+   "position": "M",
+   "club": "ARS",
+   "gameweek": 14,
+   "gw_fpts": 25.75,
+   "next4_fpts": 28.0,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 3149.0
+  },
+  {
+   "player": "James Justin",
+   "position": "D",
+   "club": "LEE",
+   "gameweek": 25,
+   "gw_fpts": 25.5,
+   "next4_fpts": 44.5,
+   "started": true,
+   "teams": 9,
+   "bucket": "late_add",
+   "minutes_before_ko": 64.0
+  },
+  {
+   "player": "Mathys Tel",
+   "position": "F",
+   "club": "TOT",
+   "gameweek": 21,
+   "gw_fpts": 25.5,
+   "next4_fpts": 37.0,
+   "started": true,
+   "teams": 6,
+   "bucket": "late_add",
+   "minutes_before_ko": 20.0
+  },
+  {
+   "player": "Jan-Paul van Hecke",
+   "position": "D",
+   "club": "BHA",
+   "gameweek": 14,
+   "gw_fpts": 25.25,
+   "next4_fpts": 45.25,
+   "started": true,
+   "teams": 5,
+   "bucket": "late_add",
+   "minutes_before_ko": 4.0
+  },
+  {
+   "player": "William Osula",
+   "position": "F",
+   "club": "NEW",
+   "gameweek": 37,
+   "gw_fpts": 25.0,
+   "next4_fpts": 27.0,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 4470.0
+  },
+  {
+   "player": "Malick Thiaw",
+   "position": "D",
+   "club": "NEW",
+   "gameweek": 26,
+   "gw_fpts": 25.0,
+   "next4_fpts": 54.0,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 1710.0
+  },
+  {
+   "player": "Lewis Miley",
+   "position": "M",
+   "club": "NEW",
+   "gameweek": 13,
+   "gw_fpts": 25.0,
+   "next4_fpts": 45.5,
+   "started": true,
+   "teams": 1,
+   "bucket": "late_add",
+   "minutes_before_ko": 34.0
+  },
+  {
+   "player": "Ethan Ampadu",
+   "position": "D",
+   "club": "LEE",
+   "gameweek": 22,
+   "gw_fpts": 24.75,
+   "next4_fpts": 37.5,
+   "started": true,
+   "teams": 7,
+   "bucket": "late_add",
+   "minutes_before_ko": 55.0
+  },
+  {
+   "player": "Vitaly Janelt",
+   "position": "M",
+   "club": "BRF",
+   "gameweek": 20,
+   "gw_fpts": 24.75,
+   "next4_fpts": 53.5,
+   "started": true,
+   "teams": 9,
+   "bucket": "late_add",
+   "minutes_before_ko": 51.0
+  },
+  {
+   "player": "Josko Gvardiol",
+   "position": "D",
+   "club": "MCI",
+   "gameweek": 7,
+   "gw_fpts": 24.75,
+   "next4_fpts": 31.25,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 4410.0
+  },
+  {
+   "player": "Lucas Paqueta",
+   "position": "M",
+   "club": "WHU",
+   "gameweek": 3,
+   "gw_fpts": 24.75,
+   "next4_fpts": 46.25,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 4260.0
+  },
+  {
+   "player": "Antonee Robinson",
+   "position": "D",
+   "club": "FUL",
+   "gameweek": 37,
+   "gw_fpts": 24.75,
+   "next4_fpts": 38.25,
+   "started": true,
+   "teams": 1,
+   "bucket": "waivers",
+   "minutes_before_ko": 3736.0
+  },
+  {
+   "player": "Omar Marmoush",
+   "position": "F",
+   "club": "MCI",
+   "gameweek": 36,
+   "gw_fpts": 24.5,
+   "next4_fpts": 24.5,
+   "started": true,
+   "teams": 4,
+   "bucket": "waivers",
+   "minutes_before_ko": 7154.0
+  }
+ ]
+}

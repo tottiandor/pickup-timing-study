@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pickup Timing Study 25/26 — The Draft Society</title>
+<meta name="description" content="Everyone sees the same team sheet. What you do with it is worth less than you think — and the thing that is worth something isn't speed.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tds.css">
+</head>
+<body>
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="masthead-title">The Draft Society <span>/ Pickup Timing Study</span></div>
+    <nav>
+      <a href="index.html" aria-current="page">Findings</a>
+      <a href="timing.html">Timing</a>
+      <a href="positions.html">Positions</a>
+      <a href="season.html">Season</a>
+      <a href="faab.html">The money</a>
+      <a href="best-pickups.html">Best pickups</a>
+      <a href="method.html">Method</a>
+    </nav>
+  </header>
+
+  <p class="kicker">25/26 &middot; 18 divisions &middot; 23,846 pickups</p>
+  <h1>Everyone reads<br>the same team sheet</h1>
+  <p class="lede">So nobody has an edge from reading it. We measured what
+  managers actually do once the lineups are out &mdash; and what little
+  separates a good pickup from a bad one turns out to have nothing to do
+  with being quick.</p>
+
+  <div class="caveat">
+    <strong>Two things this study is not going to tell you.</strong> That
+    pickups spike when the lineups drop at KO&minus;75 &mdash; you already
+    knew, because you are one of the people doing it. And that sniped
+    players start almost every time: that is not a finding, it is the
+    definition. You make the pickup <em>because</em> you have seen he is
+    starting. Both are in the <a href="timing.html">timing</a> and
+    <a href="method.html">method</a> pages as background. Everything below is
+    what is left once you take them out.
+  </div>
+
+  <h2>The only decision left</h2>
+  <p>By the time you are in the window, "is he playing" has been answered for
+  free, for everyone. At that moment there are on average
+  <strong id="pool">&mdash;</strong> <em>confirmed starters</em> sitting
+  unowned. Which of them you take is the entire skill.</p>
+
+  <div class="stat-row" id="headline"></div>
+
+  <p>Managers land at the <strong id="captured">&mdash;</strong> percentile of
+  the confirmed starters in front of them &mdash; worth
+  <strong id="skill">&mdash;</strong> FPts over flipping a coin between them.
+  That is the sum total of demonstrated selection skill in the most-watched
+  five minutes of the fantasy week.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>What they took, against what was there</h3>
+      <span class="note">informed pickups that produced a starter</span></div>
+    <div id="skill-chart"></div>
+    <p class="note" style="margin-top:14px">The best available bar is
+      <em>ex-post</em>. Nobody picks the week's 23-point haul every Saturday,
+      and we are not pretending that is a missed opportunity &mdash; it is
+      there to show how wide the spread is. The honest comparison is the
+      coin-flip bar.</p>
+  </div>
+
+  <h2>Position, once you divide out scarcity</h2>
+  <p>The obvious cut is by position, and the obvious reading of it is wrong.
+  Waiver forwards start half as often as waiver defenders &mdash; but that is
+  almost entirely the pool. Only <strong id="pool-f">&mdash;</strong> of the
+  <em>free</em> forwards in a given gameweek went on to start at all, against
+  <strong id="pool-d">&mdash;</strong> of free defenders. Real teams field
+  four defenders and one or two forwards, so the spare forwards lying around
+  are overwhelmingly bench players.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Start rate, before and after the pool</h3>
+      <span class="note">the manager's rate against the base rate they drew from</span></div>
+    <div id="lift-chart"></div>
+    <p class="note" style="margin-top:14px">Raw, the gap between defenders and
+      forwards is 16 points of start rate. Measured as lift over each
+      position's own free pool it is under six. Roughly three quarters of the
+      apparent position effect on start rate was scarcity, not skill.</p>
+  </div>
+
+  <p>What does survive is points. These are all <em>confirmed starters</em>,
+  so the pool cannot explain it &mdash; a starting defender simply returns
+  more in this scoring system than a starting midfielder.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Points from a confirmed starter, by position</h3>
+      <span class="note">faint bar is the average free starter at that position</span></div>
+    <div id="position-chart"></div>
+    <p class="note" style="margin-top:14px">Useful with one obvious limit: if
+      the hole in your side is a midfielder, you cannot fill it with a
+      defender. The advice is for a free slot, not a forced one.</p>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h3>What each lever is worth</h3>
+      <span class="note">FPts per pickup</span></div>
+    <div id="lever-chart"></div>
+    <p class="note" style="margin-top:14px">Always taking the defender is
+      worth more than every bit of selection skill managers currently show,
+      and roughly three times as much as winning the race. Both levers are
+      available to anyone looking at the same screen.</p>
+  </div>
+
+  <h2>Buy early for quality, late for certainty</h2>
+  <p>The trade is real and it runs the way round most people assume it
+  doesn't. A waiver claim days ahead is a bet on a better footballer who
+  might be benched. The informed pickup is a worse footballer you know will
+  play.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Points, once he actually started</h3>
+      <span class="note">so the certainty is stripped out of both</span></div>
+    <div id="quality-chart"></div>
+  </div>
+
+  <h2>The waiver market cannot price a week</h2>
+  <p>This one is not obvious at all. Above about $9 a FAAB bid starts
+  <em>losing</em> you claims, and at no price does it buy points.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Share of waiver claims won, by bid</h3>
+      <span class="note">all claims, won and lost</span></div>
+    <div id="faab-chart"></div>
+    <p class="note" style="margin-top:14px">A big bid is a signal you are in a
+      fight, and most people in a fight lose it.
+      <a href="faab.html">The money, in full</a>.</p>
+  </div>
+
+  <h2>What eighteen divisions know</h2>
+  <p>Each division is a separate market. When several of them independently
+  chase the same player in the same gameweek, he tends to deliver &mdash;
+  the one genuine crowd signal in the data, and one a single league cannot
+  produce.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Divisions chasing the same player</h3>
+      <span class="note">mean FPts that gameweek</span></div>
+    <div id="consensus-chart"></div>
+  </div>
+
+  <footer>
+    <p>Fantrax transaction history, 25/26. International Genie League (144
+    teams, 12 divisions) and DraftPL Community League (72 teams, 6
+    divisions). Scoring from Togga; kickoff times from the FPL fixture list.
+    <a href="method.html">Method and caveats</a>.</p>
+    <p id="generated"></p>
+  </footer>
+
+</div>
+
+<script src="data/metrics.js"></script>
+<script src="data/extra.js"></script>
+<script src="assets/tds.js"></script>
+<script>
+(function () {
+  var m, x;
+  try { m = TDS.data(); x = window.PICKUP_EXTRA; }
+  catch (e) { TDS.fail(document.getElementById('headline'), e.message); return; }
+
+  var e = x.edge, dist = x.distributions;
+  var POS = { G: 'Goalkeepers', D: 'Defenders', M: 'Midfielders', F: 'Forwards' };
+
+  document.getElementById('pool').textContent = e.pool_size;
+  document.getElementById('captured').textContent = e.captured + 'th';
+  document.getElementById('skill').textContent = '+' + e.skill.toFixed(2);
+
+  // ------------------------------------------------------------ headline --
+  // The position figure is taken from the scarcity-normalised table, not the
+  // raw one: both sides are confirmed starters, so the pool cannot explain it.
+  var scored0 = x.scarcity.positions.filter(function (p) {
+    return p.mean_fpts !== null;
+  }).sort(function (a, b) { return b.mean_fpts - a.mean_fpts; });
+  var cleanGap = scored0.length > 1
+    ? scored0[0].mean_fpts - scored0[scored0.length - 1].mean_fpts : 0;
+
+  [['Confirmed starters free', e.pool_size, 'at the moment they picked'],
+   ['Skill on display', '+' + e.skill.toFixed(2), 'FPts over a coin flip'],
+   ['Best position, worst position', '+' + cleanGap.toFixed(2),
+     'FPts, confirmed starters either way'],
+   ['Being first', '+' + e.speed_gap.toFixed(2), 'FPts, the whole race']
+  ].forEach(function (s, i) {
+    var cell = TDS.el('div', 'stat');
+    cell.appendChild(TDS.el('div', 'stat-label', s[0]));
+    cell.appendChild(TDS.el('div', 'stat-value' + (i === 2 ? ' gold' : ''), s[1]));
+    cell.appendChild(TDS.el('div', 'stat-sub', s[2]));
+    document.getElementById('headline').appendChild(cell);
+  });
+
+  // --------------------------------------------------------------- skill --
+  TDS.bars(document.getElementById('skill-chart'), {
+    rows: [
+      { label: 'Best one available', note: 'ex-post, nobody hits this',
+        bars: [{ key: 'baseline', value: e.best_available,
+          display: TDS.num(e.best_available), faint: true }] },
+      { label: 'What they took', note: 'n=' + TDS.thousands(e.n),
+        bars: [{ key: 'lineup_snipe', value: e.actual,
+          display: TDS.num(e.actual) }] },
+      { label: 'A coin flip', note: 'random confirmed starter',
+        bars: [{ key: 'waivers', value: e.coin_flip,
+          display: TDS.num(e.coin_flip) }] }
+    ]
+  });
+
+  // ------------------------------------------------------------ position --
+  var sc = x.scarcity.positions;
+  var byCode = {};
+  sc.forEach(function (p) { byCode[p.position] = p; });
+  var hues = { D: 'teal', G: 'accent', F: 'late_add', M: 'violet' };
+
+  if (byCode.F) {
+    document.getElementById('pool-f').textContent =
+      TDS.pct(byCode.F.pool_start_rate);
+  }
+  if (byCode.D) {
+    document.getElementById('pool-d').textContent =
+      TDS.pct(byCode.D.pool_start_rate);
+  }
+
+  // Start rate against the base rate it was drawn from.
+  TDS.bars(document.getElementById('lift-chart'), {
+    max: 100, showKeys: true,
+    rows: sc.map(function (p) {
+      return {
+        label: POS[p.position] || p.position,
+        note: 'n=' + TDS.thousands(p.n) + ' · lift +' + p.lift,
+        bars: [
+          { key: hues[p.position] || 'waivers', name: 'Picked',
+            value: p.add_start_rate, display: TDS.pct(p.add_start_rate) },
+          { key: 'baseline', name: 'Free pool', value: p.pool_start_rate,
+            display: TDS.pct(p.pool_start_rate), faint: true }
+        ]
+      };
+    })
+  });
+
+  // Points from a confirmed starter, with that position's own pool beside it.
+  var scored = sc.filter(function (p) { return p.mean_fpts !== null; })
+    .sort(function (a, b) { return b.mean_fpts - a.mean_fpts; });
+  TDS.bars(document.getElementById('position-chart'), {
+    showKeys: true,
+    rows: scored.map(function (p) {
+      return {
+        label: POS[p.position] || p.position,
+        note: p.within_pos_pctile + 'th percentile of free starters there',
+        bars: [
+          { key: hues[p.position] || 'waivers', name: 'Picked',
+            value: p.mean_fpts, display: TDS.num(p.mean_fpts) },
+          { key: 'baseline', name: 'Free pool', value: p.pool_mean,
+            display: TDS.num(p.pool_mean), faint: true }
+        ]
+      };
+    })
+  });
+
+  var posGap = scored.length > 1
+    ? scored[0].mean_fpts - scored[scored.length - 1].mean_fpts : 0;
+  TDS.bars(document.getElementById('lever-chart'), {
+    rows: [
+      { label: 'Take a ' + (POS[scored[0].position] || '').toLowerCase().slice(0, -1) +
+          ', not a ' + (POS[scored[scored.length - 1].position] || '')
+            .toLowerCase().slice(0, -1),
+        note: 'confirmed starters either way',
+        bars: [{ key: 'teal', value: posGap, display: '+' + TDS.num(posGap) }] },
+      { label: 'All the selection skill on show', note: 'over a coin flip',
+        bars: [{ key: 'lineup_snipe', value: e.skill,
+          display: '+' + TDS.num(e.skill) }] },
+      { label: 'Win the race to be first', note: 'inside the five minutes',
+        bars: [{ key: 'late_add', value: e.speed_gap,
+          display: '+' + TDS.num(e.speed_gap) }] },
+      { label: 'Pick someone playing at home', note: 'rather than away',
+        bars: [{ key: 'violet', value: e.home - e.away,
+          display: '+' + TDS.num(e.home - e.away) }] }
+    ]
+  });
+
+  // ------------------------------------------------------------- quality --
+  var quality = TDS.BUCKETS.map(function (b) {
+    return { label: TDS.SHORT[b], note: 'n=' + TDS.thousands(dist[b].n),
+      bars: [{ key: b, value: dist[b].mean_if_started,
+        display: TDS.num(dist[b].mean_if_started) }] };
+  });
+  quality.push({ label: TDS.SHORT.baseline,
+    note: 'n=' + TDS.thousands(m.baseline.n) + ', free at kickoff and started',
+    bars: [{ key: 'baseline', value: m.baseline.mean_fpts,
+      display: TDS.num(m.baseline.mean_fpts), faint: true }] });
+  TDS.bars(document.getElementById('quality-chart'), { rows: quality });
+
+  // ---------------------------------------------------------------- faab --
+  var best = x.faab.tiers.reduce(function (a, b) {
+    return b.win_rate > a.win_rate ? b : a;
+  });
+  TDS.bars(document.getElementById('faab-chart'), {
+    max: 70,
+    rows: x.faab.tiers.map(function (t) {
+      return { label: t.tier, note: 'n=' + TDS.thousands(t.claims),
+        bars: [{ key: t === best ? 'lineup_snipe' : 'waivers',
+          value: t.win_rate, display: TDS.pct(t.win_rate) }] };
+    })
+  });
+
+  // ----------------------------------------------------------- consensus --
+  TDS.bars(document.getElementById('consensus-chart'), {
+    rows: x.faab.consensus.map(function (c) {
+      return {
+        label: c.band + (c.band === '1' ? ' division' : ' divisions'),
+        note: 'n=' + TDS.thousands(c.n) + ' · ' + TDS.pct(c.start_rate) +
+          ' started',
+        bars: [{ key: 'violet', value: c.mean_fpts,
+          display: TDS.num(c.mean_fpts) }]
+      };
+    })
+  });
+
+  document.getElementById('generated').textContent = 'Built ' +
+    String(m.generated).slice(0, 10) + '.';
+}());
+</script>
+</body>
+</html>

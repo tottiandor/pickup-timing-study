@@ -1,0 +1,175 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Positions — Pickup Timing Study 25/26</title>
+<meta name="description" content="Which positions are worth sniping and which are worth claiming early.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tds.css">
+</head>
+<body class="p-positions">
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="masthead-title">The Draft Society <span>/ Pickup Timing Study</span></div>
+    <nav>
+      <a href="index.html">Findings</a>
+      <a href="timing.html">Timing</a>
+      <a href="positions.html" aria-current="page">Positions</a>
+      <a href="season.html">Season</a>
+      <a href="faab.html">The money</a>
+      <a href="best-pickups.html">Best pickups</a>
+      <a href="method.html">Method</a>
+    </nav>
+  </header>
+
+  <p class="kicker">Where the advice splits</p>
+  <h1>It depends<br>what you need</h1>
+  <p class="lede">"Should I snipe?" has four different answers. Goalkeepers
+  barely rotate, so you can claim one days early and be nearly certain.
+  Forwards rotate constantly, and that is exactly where waiting for the team
+  sheet earns its keep.</p>
+
+  <div class="stat-row" id="pos-stats"></div>
+
+  <h2>Start rate by position</h2>
+  <p>The gap between a blind claim and an informed one is a forward problem
+  above all. Half of all forwards claimed on waivers never started.</p>
+  <div class="panel">
+    <div class="panel-head"><h3>Did he start?</h3>
+      <div class="legend" id="legend-1"></div></div>
+    <div id="start-chart"></div>
+  </div>
+
+  <h2>Points by position</h2>
+  <div class="panel">
+    <div class="panel-head"><h3>Mean FPts in the target gameweek</h3>
+      <div class="legend" id="legend-2"></div></div>
+    <div id="points-chart"></div>
+  </div>
+
+  <h2>Every cell</h2>
+  <p class="note">Anything under 30 events is flagged and should not be
+  quoted on its own.</p>
+  <div class="scroll"><table id="pos-table">
+    <thead><tr>
+      <th>Position</th><th>Bucket</th>
+      <th class="num" data-type="num">n</th>
+      <th class="num" data-type="num">Start %</th>
+      <th class="num" data-type="num">Mean</th>
+      <th class="num" data-type="num">Median</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <h2>What to do with this</h2>
+  <div class="caveat">
+    <strong>Goalkeepers</strong> are the best blind add in the game &mdash;
+    they start about nine times in ten, so there is nothing to wait for.
+    Claim early and spend the lineup window elsewhere.
+  </div>
+  <div class="caveat">
+    <strong>Forwards</strong> are the worst blind add and the best snipe.
+    A waiver forward is close to a coin flip on whether he even plays.
+  </div>
+  <div class="caveat">
+    <strong>Defenders</strong> produced the single best cell in the study
+    when sniped. Clean sheets and the defensive categories reward a confirmed
+    starter more than anything else on the pitch.
+  </div>
+
+  <footer>
+    <p><a href="index.html">Back to the findings</a> &middot;
+    <a href="method.html">Method and caveats</a></p>
+  </footer>
+
+</div>
+
+<script src="data/metrics.js"></script>
+<script src="assets/tds.js"></script>
+<script>
+(function () {
+  var m;
+  try { m = TDS.data(); }
+  catch (e) { TDS.fail(document.getElementById('pos-stats'), e.message); return; }
+
+  var NAME = { D: 'Defenders', M: 'Midfielders', F: 'Forwards', G: 'Goalkeepers' };
+  var ORDER = ['G', 'D', 'M', 'F'];
+  var by = m.by_position;
+
+  function cell(position, bucket) {
+    return (by[position] || {})[bucket] || null;
+  }
+
+  // --------------------------------------------------------------- stats --
+  var gk = cell('G', 'waivers');
+  var fw = cell('F', 'waivers');
+  var fwSnipe = cell('F', 'lineup_snipe');
+  var dSnipe = cell('D', 'lineup_snipe');
+  [['Best blind add', 'G ' + TDS.pct(gk.start_rate), 'goalkeepers barely rotate'],
+   ['Worst blind add', 'F ' + TDS.pct(fw.start_rate), 'half never started'],
+   ['Sniping a forward', TDS.pct(fwSnipe.start_rate), 'from ' + TDS.pct(fw.start_rate)],
+   ['Best cell in the study', TDS.num(dSnipe.mean_fpts), 'sniped defenders, FPts']
+  ].forEach(function (s, i) {
+    var box = TDS.el('div', 'stat');
+    box.appendChild(TDS.el('div', 'stat-label', s[0]));
+    box.appendChild(TDS.el('div', 'stat-value' + (i === 3 ? ' gold' : ''), s[1]));
+    box.appendChild(TDS.el('div', 'stat-sub', s[2]));
+    document.getElementById('pos-stats').appendChild(box);
+  });
+
+  TDS.legend(document.getElementById('legend-1'), TDS.BUCKETS);
+  TDS.legend(document.getElementById('legend-2'), TDS.BUCKETS);
+
+  // -------------------------------------------------------------- charts --
+  function rows(key, format) {
+    return ORDER.filter(function (p) { return by[p]; }).map(function (p) {
+      return {
+        label: NAME[p],
+        bars: TDS.BUCKETS.map(function (b) {
+          var c = cell(p, b);
+          return {
+            key: b,
+            value: c ? c[key] : null,
+            display: c ? format(c[key]) : '--',
+            thin: c && c.n < 30
+          };
+        })
+      };
+    });
+  }
+  TDS.bars(document.getElementById('start-chart'),
+    { rows: rows('start_rate', TDS.pct), max: 100, showKeys: true });
+  TDS.bars(document.getElementById('points-chart'),
+    { rows: rows('mean_fpts', function (v) { return TDS.num(v); }), showKeys: true });
+
+  // --------------------------------------------------------------- table --
+  var body = document.querySelector('#pos-table tbody');
+  ORDER.forEach(function (p) {
+    TDS.BUCKETS.forEach(function (b) {
+      var c = cell(p, b);
+      if (!c) { return; }
+      var tr = document.createElement('tr');
+      tr.appendChild(TDS.el('td', null, NAME[p]));
+      var tag = TDS.el('td');
+      var chip = TDS.el('span', 'tag ' + b, TDS.SHORT[b]);
+      tag.appendChild(chip);
+      tr.appendChild(tag);
+      var n = TDS.el('td', 'num', TDS.thousands(c.n));
+      if (c.n < 30) { n.appendChild(TDS.el('span', 'thin', ' thin')); }
+      n.dataset.value = c.n;
+      tr.appendChild(n);
+      tr.appendChild(TDS.el('td', 'num', TDS.pct(c.start_rate)));
+      tr.appendChild(TDS.el('td', 'num', TDS.num(c.mean_fpts)));
+      tr.appendChild(TDS.el('td', 'num', TDS.num(c.median_fpts)));
+      body.appendChild(tr);
+    });
+  });
+  TDS.sortable(document.getElementById('pos-table'));
+}());
+</script>
+</body>
+</html>

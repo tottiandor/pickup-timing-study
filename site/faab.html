@@ -1,0 +1,200 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The money — Pickup Timing Study 25/26</title>
+<meta name="description" content="What a FAAB bid actually buys on the Fantrax waiver wire, and what the crowd knows.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tds.css">
+</head>
+<body class="p-money">
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="masthead-title">The Draft Society <span>/ Pickup Timing Study</span></div>
+    <nav>
+      <a href="index.html">Findings</a>
+      <a href="timing.html">Timing</a>
+      <a href="positions.html">Positions</a>
+      <a href="season.html">Season</a>
+      <a href="faab.html" aria-current="page">The money</a>
+      <a href="best-pickups.html">Best pickups</a>
+      <a href="method.html">Method</a>
+    </nav>
+  </header>
+
+  <p class="kicker">What a bid buys</p>
+  <h1>You are paying<br>for a fight</h1>
+  <p class="lede">Three quarters of waiver claims are made for nothing at all
+  &mdash; on priority, at $0. Of the ones that do cost money, the expensive
+  end does worse on every measure that matters, including the one you would
+  think money controls: whether you win the claim.</p>
+
+  <div class="stat-row" id="faab-stats"></div>
+
+  <h2>Win rate climbs, peaks, then collapses</h2>
+  <p>Up to about $9 the money works as you would expect. Above that it goes
+  into reverse. Not because a higher bid loses an auction &mdash; it cannot,
+  the top bid wins &mdash; but because <strong>a big bid is a signal that you
+  are in a fight</strong>, and most people in a fight lose it. You bid $25 on
+  the player everybody else is chasing too.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Share of claims won</h3>
+      <span class="note">all waiver claims, won and lost</span></div>
+    <div id="win-chart"></div>
+  </div>
+
+  <h2>And it buys nothing on the pitch</h2>
+  <p>The dearest claims start least often and score least per week they are
+  held. The only thing that rises with the price is how long the manager
+  keeps him &mdash; and that is a sunk cost, not a verdict on the player.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Points per gameweek held</h3>
+      <span class="note">the only measure not inflated by hold length</span></div>
+    <div id="rate-chart"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Did he start the week you claimed him?</h3>
+      <span class="note">expensive claims are bets on a player not yet in the side</span></div>
+    <div id="start-chart"></div>
+  </div>
+
+  <h2>Every tier</h2>
+  <div class="scroll"><table id="faab-table">
+    <thead><tr>
+      <th>Bid</th>
+      <th class="num" data-type="num">Claims</th>
+      <th class="num" data-type="num">Win %</th>
+      <th class="num" data-type="num">Won</th>
+      <th class="num" data-type="num">Start %</th>
+      <th class="num" data-type="num">FPts</th>
+      <th class="num" data-type="num">GWs held</th>
+      <th class="num" data-type="num">Per GW</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <div class="caveat">
+    <strong>Two thirds of contested auctions were won without spending a
+    penny.</strong> Grouping properly by division &mdash; the only place two
+    claims actually compete &mdash; the median winning margin over the best
+    losing bid was $0.00, and 7% of auctions were won by someone who bid
+    <em>less</em> than the loser. Waiver priority is deciding a great many of
+    these, not money.
+  </div>
+
+  <h2>What eighteen divisions know</h2>
+  <p>Each division is a separate market with its own managers. Counting how
+  many of them independently chased the same player in the same gameweek is a
+  real consensus signal &mdash; and the crowd turns out to be worth
+  listening to, up to a point.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Divisions chasing him, against what he scored</h3>
+      <span class="note">mean FPts that gameweek</span></div>
+    <div id="consensus-chart"></div>
+    <p class="note" style="margin-top:14px">It flattens at the top. The very
+    most fashionable pickups are no better than the merely popular ones.</p>
+  </div>
+
+  <footer>
+    <p><a href="index.html">Back to the findings</a> &middot;
+    <a href="method.html">Method and caveats</a></p>
+  </footer>
+
+</div>
+
+<script src="data/extra.js"></script>
+<script src="assets/tds.js"></script>
+<script>
+(function () {
+  var x = window.PICKUP_EXTRA;
+  if (!x) {
+    TDS.fail(document.getElementById('faab-stats'),
+      'no data: site/data/extra.js is missing. Run analysis/build_site_data.py.');
+    return;
+  }
+  var tiers = x.faab.tiers;
+  var free = tiers[0];
+  var best = tiers.reduce(function (a, b) {
+    return b.win_rate > a.win_rate ? b : a;
+  });
+  var dearest = tiers[tiers.length - 1];
+
+  [['Claims made at $0', TDS.pct(100 * (x.faab.claims_total - x.faab.claims_with_bid)
+      / x.faab.claims_total), 'priority, not money'],
+   ['Win rate peaks at', best.tier, TDS.pct(best.win_rate) + ' of claims won'],
+   ['Win rate at ' + dearest.tier, TDS.pct(dearest.win_rate),
+     'down from ' + TDS.pct(best.win_rate)],
+   ['Points per week held', TDS.num(free.per_gameweek_held) + ' → ' +
+     TDS.num(dearest.per_gameweek_held), '$0 against ' + dearest.tier]
+  ].forEach(function (s, i) {
+    var box = TDS.el('div', 'stat');
+    box.appendChild(TDS.el('div', 'stat-label', s[0]));
+    box.appendChild(TDS.el('div', 'stat-value' + (i === 2 ? ' gold' : ''), s[1]));
+    box.appendChild(TDS.el('div', 'stat-sub', s[2]));
+    document.getElementById('faab-stats').appendChild(box);
+  });
+
+  function tierRows(key, format, filter) {
+    return tiers.filter(filter || function () { return true; }).map(function (t) {
+      return {
+        label: t.tier,
+        note: 'n=' + TDS.thousands(t.claims),
+        bars: [{
+          key: t.win_rate === best.win_rate ? 'lineup_snipe' : 'waivers',
+          value: t[key],
+          display: t[key] === null ? '--' : format(t[key]),
+          thin: t.n_won !== null && t.n_won < 30
+        }]
+      };
+    });
+  }
+
+  TDS.bars(document.getElementById('win-chart'),
+    { rows: tierRows('win_rate', TDS.pct), max: 70 });
+  TDS.bars(document.getElementById('rate-chart'),
+    { rows: tierRows('per_gameweek_held', function (v) { return TDS.num(v); }) });
+  TDS.bars(document.getElementById('start-chart'),
+    { rows: tierRows('start_rate', TDS.pct), max: 100 });
+
+  var body = document.querySelector('#faab-table tbody');
+  tiers.forEach(function (t) {
+    var tr = document.createElement('tr');
+    tr.appendChild(TDS.el('td', null, t.tier));
+    [[t.claims, TDS.thousands(t.claims)],
+     [t.win_rate, TDS.pct(t.win_rate)],
+     [t.n_won, TDS.thousands(t.n_won)],
+     [t.start_rate, t.start_rate === null ? '--' : TDS.pct(t.start_rate)],
+     [t.mean_fpts, TDS.num(t.mean_fpts)],
+     [t.held_gameweeks, t.held_gameweeks === null ? '--' : TDS.num(t.held_gameweeks, 1)],
+     [t.per_gameweek_held, TDS.num(t.per_gameweek_held)]
+    ].forEach(function (pair) {
+      var td = TDS.el('td', 'num', pair[1]);
+      td.dataset.value = pair[0] === null ? '' : pair[0];
+      tr.appendChild(td);
+    });
+    body.appendChild(tr);
+  });
+  TDS.sortable(document.getElementById('faab-table'));
+
+  TDS.bars(document.getElementById('consensus-chart'), {
+    rows: x.faab.consensus.map(function (c) {
+      return {
+        label: c.band + (c.band === '1' ? ' division' : ' divisions'),
+        note: 'n=' + TDS.thousands(c.n) + ' · ' + TDS.pct(c.start_rate) + ' started',
+        bars: [{ key: 'lineup_snipe', value: c.mean_fpts,
+          display: TDS.num(c.mean_fpts) }]
+      };
+    })
+  });
+}());
+</script>
+</body>
+</html>

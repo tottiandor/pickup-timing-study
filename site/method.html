@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Method — Pickup Timing Study 25/26</title>
+<meta name="description" content="Definitions, data sources, and what this study cannot tell you.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tds.css">
+</head>
+<body class="p-method">
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="masthead-title">The Draft Society <span>/ Pickup Timing Study</span></div>
+    <nav>
+      <a href="index.html">Findings</a>
+      <a href="timing.html">Timing</a>
+      <a href="positions.html">Positions</a>
+      <a href="season.html">Season</a>
+      <a href="faab.html">The money</a>
+      <a href="best-pickups.html">Best pickups</a>
+      <a href="method.html" aria-current="page">Method</a>
+    </nav>
+  </header>
+
+  <p class="kicker">How this was built</p>
+  <h1>Method,<br>and its limits</h1>
+
+  <h2>The data</h2>
+  <p>Every transaction from two Fantrax EPL draft leagues in 25/26, pulled
+  from Fantrax's own transaction history. Both run 12-team divisions on
+  broadly the same settings, which is what makes them comparable.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>League</th><th class="num">Teams</th><th class="num">Divisions</th><th class="num">Transactions</th></tr></thead>
+    <tbody>
+      <tr><td>International Genie League</td><td class="num">144</td><td class="num">12</td><td class="num">41,300</td></tr>
+      <tr><td>DraftPL Community League</td><td class="num">72</td><td class="num">6</td><td class="num">27,633</td></tr>
+    </tbody>
+  </table></div>
+  <p id="totals" class="note"></p>
+
+  <p>Player scoring comes from Togga's per-gameweek Fantrax data, joined on
+  Fantrax player id &mdash; <strong>a 100% match, no name matching
+  anywhere</strong>. Kickoff times come from the FPL fixture list, joined on
+  the ordered club pair rather than the gameweek, because a postponed match
+  can sit in a different gameweek for each source. All 380 fixtures matched.</p>
+
+  <h2>The buckets</h2>
+  <p>Every bucket is measured against the kickoff of the player's <em>next
+  real fixture</em> after the add. Lineups are announced at KO&minus;75.</p>
+  <div class="scroll"><table>
+    <thead><tr><th>Bucket</th><th>Definition</th></tr></thead>
+    <tbody>
+      <tr><td><span class="tag waivers">Waivers</span></td><td>Added more than 75 minutes before kickoff &mdash; before the team sheet</td></tr>
+      <tr><td><span class="tag lineup_snipe">Snipe</span></td><td>Added between KO&minus;75 and KO&minus;70, the five minutes after the announcement</td></tr>
+      <tr><td><span class="tag late_add">Late add</span></td><td>Added between KO&minus;70 and kickoff</td></tr>
+    </tbody>
+  </table></div>
+  <p>Only executed claims count as pickups. A failed claim moved no player;
+  15,108 of them are excluded from every value figure and used separately as
+  a record of demand.</p>
+
+  <h2>Things that would have gone wrong quietly</h2>
+  <p>Each of these was found by checking, and each would have produced
+  plausible-looking numbers if it had not been:</p>
+
+  <h3>Timestamps are not EST</h3>
+  <p>Fantrax labels the transaction clock "Date (EST)", but the same league's
+  scoring periods come back at &minus;0400 in September and &minus;0500 in
+  January. It is US Eastern <em>wall time</em>, daylight saving and all.
+  Reading the label literally would have shifted every add by an hour for
+  most of the season, which would have destroyed a five-minute bucket.
+  Timestamps carry minutes, never seconds.</p>
+
+  <h3>Drafts come one division at a time</h3>
+  <p>Asking Fantrax for a league's draft returns a single division's picks
+  and does not say so. Taken at face value, 3,264 drafted players across the
+  other divisions would have looked like free agents all season.</p>
+
+  <h3>Free agency is per division</h3>
+  <p>A player rostered in one division is still free in every other. Ownership
+  is therefore reconstructed separately for each of the 18 divisions, and
+  "contested auctions" are grouped by division too &mdash; pooling them across
+  divisions invents competition that never happened.</p>
+
+  <h3>Scoring rows are per match, not per gameweek</h3>
+  <p>In rescheduled weeks a player has two rows under one gameweek number.
+  Timing is matched to a single fixture; value is summed across the whole
+  gameweek.</p>
+
+  <h2>Two comparisons that are easy to get wrong</h2>
+  <div class="caveat">
+    <strong>The never-picked-up pool is conditioned on starting.</strong> It
+    is built from players who were free at kickoff <em>and</em> started, so it
+    compares to a bucket's "points once he started", never to its overall
+    mean. Comparing it to the unconditional figure stacks the deck against the
+    pickup, because a manager choosing a free agent does not yet know who will
+    start.
+  </div>
+  <div class="caveat">
+    <strong>Points while held grows with how long he was held.</strong> It
+    measures the length of the spell, not the player. Hold length is also
+    partly a sunk cost &mdash; a manager who paid a lot is committed by the
+    price. Only points <em>per gameweek held</em> says anything about quality.
+  </div>
+
+  <h2>What this cannot tell you</h2>
+  <ul>
+    <li><strong>It is one season.</strong> 25/26, two leagues, 18 divisions,
+    every one of them 12 teams on broadly similar settings. Nothing here has
+    been tested against a different format.</li>
+    <li><strong>It measures real Fantrax points, not lineup decisions.</strong>
+    Whether the manager actually started the player he picked up is not in
+    scope. A pickup that scored 30 on your bench counts here as 30.</li>
+    <li><strong>The FAAB findings only apply to leagues using FAAB.</strong>
+    Three quarters of waiver claims in this data were made at $0 on priority.</li>
+    <li><strong>Thin cells are flagged, not hidden.</strong> Anything under 30
+    events is marked on the page it appears.</li>
+    <li><strong>Sniping cannot be separated from the decision to snipe.</strong>
+    Managers who watch for team news may simply be better managers. Nothing
+    here is a controlled experiment.</li>
+  </ul>
+
+  <h2>Reproducing it</h2>
+  <p>Everything runs on a laptop with no credentials: Fantrax answers these
+  leagues' transaction history without a login.</p>
+  <div class="panel">
+    <pre style="margin:0;overflow-x:auto;font-size:12.5px;color:var(--white)">python scraper/pull.py            # transactions, drafts, metadata
+python analysis/events.py         # buckets and the comparison pools
+python analysis/metrics.py        # headline tables
+python analysis/build_site_data.py # the rest of this site's data</pre>
+  </div>
+
+  <footer>
+    <p><a href="index.html">Back to the findings</a></p>
+    <p id="generated"></p>
+  </footer>
+
+</div>
+
+<script src="data/metrics.js"></script>
+<script src="data/extra.js"></script>
+<script src="assets/tds.js"></script>
+<script>
+(function () {
+  var m = window.PICKUP_METRICS;
+  if (!m) { return; }
+  document.getElementById('totals').textContent =
+    TDS.thousands(m.counts.events) + ' pickups, ' +
+    TDS.thousands(m.counts.unique_player_gameweeks) +
+    ' of them distinct player-gameweeks, against a comparison pool of ' +
+    TDS.thousands(m.counts.baseline) + ' player-gameweeks that were free at ' +
+    'kickoff and started anyway.';
+  document.getElementById('generated').textContent =
+    'Data built ' + String(m.generated).slice(0, 10) + '.';
+}());
+</script>
+</body>
+</html>

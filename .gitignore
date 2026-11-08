@@ -1,0 +1,12 @@
+.env
+data/raw/
+__pycache__/
+*.pyc
+.venv/
+data/processed/unowned_pool.csv
+data/processed/transactions.csv
+
+# Third-party source data. Togga's per-gameweek scoring is not ours to
+# redistribute; see README for how to obtain it. The FPL fixture list is
+# public but is re-downloadable in one line.
+data/reference/

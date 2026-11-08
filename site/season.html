@@ -1,0 +1,281 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Season — Pickup Timing Study 25/26</title>
+<meta name="description" content="How pickup value moves across a Premier League season.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tds.css">
+</head>
+<body class="p-season">
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="masthead-title">The Draft Society <span>/ Pickup Timing Study</span></div>
+    <nav>
+      <a href="index.html">Findings</a>
+      <a href="timing.html">Timing</a>
+      <a href="positions.html">Positions</a>
+      <a href="season.html" aria-current="page">Season</a>
+      <a href="faab.html">The money</a>
+      <a href="best-pickups.html">Best pickups</a>
+      <a href="method.html">Method</a>
+    </nav>
+  </header>
+
+  <p class="kicker">Across 38 gameweeks</p>
+  <h1>Every dollar you spend<br>in August is wasted</h1>
+  <p class="lede">FAAB budgets drain as a season runs, so the same dollar
+  meets less competition in April than in August. The gap is not subtle: a
+  dollar spent in the last six gameweeks bought roughly fifteen times the
+  points of a dollar spent in the first six.</p>
+
+  <div class="stat-row" id="value-stats"></div>
+
+  <h2>What one FAAB dollar buys</h2>
+  <p>Points returned per dollar of winning bids. Losing bids are free, which
+  is exactly why the market behaves the way it does.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Gameweek points per dollar spent</h3>
+      <span class="note">the return on a one-week rental</span></div>
+    <div id="value-chart"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Where the money actually goes</h3>
+      <span class="note">total spent on winning bids</span></div>
+    <div id="spend-chart"></div>
+    <p class="note" style="margin-top:14px">Two thirds of the season's entire
+      FAAB spend goes in the first six gameweeks, at the worst exchange rate
+      of the year.</p>
+  </div>
+
+  <h2>And it gets easier to win</h2>
+  <p>Less money in circulation means contested players go cheap, and go to
+  whoever bothers to claim them.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Price of winning a contested claim</h3>
+      <span class="note">within a division, where claims actually compete</span></div>
+    <div id="price-chart"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Contested auctions won with a $0 bid</h3>
+      <span class="note">waiver priority, no money</span></div>
+    <div id="free-chart"></div>
+  </div>
+
+  <div class="caveat">
+    <strong>This is an equilibrium, not a free lunch for everyone.</strong>
+    Late bids are cheap <em>because</em> everyone else has spent. If the whole
+    league held its budget back, April would be expensive too. What the
+    numbers say is that a manager who deviates from the crowd &mdash; who
+    sits out the August auctions and keeps powder dry &mdash; is buying at a
+    fraction of the price. That edge exists only while most people do not
+    take it.
+  </div>
+
+  <h2>Pickup value by third of the season</h2>
+  <div class="panel">
+    <div class="panel-head"><h3>Start rate</h3>
+      <div class="legend" id="legend-1"></div></div>
+    <div id="phase-start"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Mean FPts</h3>
+      <div class="legend" id="legend-2"></div></div>
+    <div id="phase-points"></div>
+  </div>
+
+  <h2>Gameweek by gameweek</h2>
+  <p>Pickups per gameweek, and what the average one returned. Spikes are
+  usually blank or double gameweeks, where squads are stretched and the
+  waiver wire does more work.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Pickups made</h3>
+      <span class="note">all buckets, by target gameweek</span></div>
+    <div id="gw-volume"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Mean FPts returned</h3>
+      <span class="note">waiver adds, by target gameweek</span></div>
+    <div id="gw-points"></div>
+  </div>
+
+  <h2>Every gameweek</h2>
+  <div class="scroll"><table id="gw-table">
+    <thead><tr>
+      <th data-type="num">GW</th>
+      <th class="num" data-type="num">Waivers</th>
+      <th class="num" data-type="num">Mean</th>
+      <th class="num" data-type="num">Snipes</th>
+      <th class="num" data-type="num">Mean</th>
+      <th class="num" data-type="num">Late</th>
+      <th class="num" data-type="num">Mean</th>
+    </tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <footer>
+    <p><a href="index.html">Back to the findings</a> &middot;
+    <a href="method.html">Method and caveats</a></p>
+  </footer>
+
+</div>
+
+<script src="data/metrics.js"></script>
+<script src="data/extra.js"></script>
+<script src="assets/tds.js"></script>
+<script>
+(function () {
+  var m, x;
+  try { m = TDS.data(); x = window.PICKUP_EXTRA; }
+  catch (e) { TDS.fail(document.getElementById('value-stats'), e.message); return; }
+
+  var PHASE = { early: 'Early, GW1-12', mid: 'Middle, GW13-25', late: 'Late, GW26-38' };
+
+  // ------------------------------------------------------ what a $ buys --
+  var value = x.faab.value, price = x.faab.price;
+  var first = value[0], last = value[value.length - 1];
+  var totalSpend = value.reduce(function (n, v) { return n + v.spent; }, 0);
+
+  [['A dollar in ' + first.phase, first.fpts_per_dollar + ' FPts',
+    'mean bid $' + first.mean_bid],
+   ['A dollar in ' + last.phase, last.fpts_per_dollar + ' FPts',
+     'mean bid $' + last.mean_bid],
+   ['Exchange rate', Math.round(last.fpts_per_dollar / first.fpts_per_dollar)
+     + '×', 'better, late against early'],
+   ['Spent in ' + first.phase, Math.round(100 * first.spent / totalSpend) + '%',
+     'of the whole season’s FAAB']
+  ].forEach(function (s, i) {
+    var cell = TDS.el('div', 'stat');
+    cell.appendChild(TDS.el('div', 'stat-label', s[0]));
+    cell.appendChild(TDS.el('div', 'stat-value' + (i === 2 ? ' gold' : ''), s[1]));
+    cell.appendChild(TDS.el('div', 'stat-sub', s[2]));
+    document.getElementById('value-stats').appendChild(cell);
+  });
+
+  TDS.bars(document.getElementById('value-chart'), {
+    rows: value.map(function (v) {
+      return { label: v.phase,
+        note: 'mean bid $' + v.mean_bid + ' · ' + TDS.pct(v.win_rate) + ' won',
+        bars: [{ key: v === first ? 'late_add' : 'teal',
+          value: v.fpts_per_dollar, display: TDS.num(v.fpts_per_dollar) }] };
+    })
+  });
+
+  TDS.bars(document.getElementById('spend-chart'), {
+    rows: value.map(function (v) {
+      return { label: v.phase,
+        note: Math.round(100 * v.spent / totalSpend) + '% of the season',
+        bars: [{ key: v === first ? 'late_add' : 'waivers', value: v.spent,
+          display: '$' + TDS.thousands(v.spent) }] };
+    })
+  });
+
+  TDS.bars(document.getElementById('price-chart'), {
+    rows: price.map(function (p) {
+      return { label: p.phase, note: TDS.thousands(p.auctions) + ' auctions',
+        bars: [{ key: 'violet', value: p.winning_bid,
+          display: '$' + TDS.num(p.winning_bid) }] };
+    })
+  });
+
+  TDS.bars(document.getElementById('free-chart'), {
+    max: 100,
+    rows: price.map(function (p) {
+      return { label: p.phase, note: TDS.thousands(p.auctions) + ' auctions',
+        bars: [{ key: 'teal', value: p.won_free, display: TDS.pct(p.won_free) }] };
+    })
+  });
+
+  TDS.legend(document.getElementById('legend-1'), TDS.BUCKETS);
+  TDS.legend(document.getElementById('legend-2'), TDS.BUCKETS);
+
+  function phaseRows(key, format) {
+    return Object.keys(m.by_phase).map(function (phase) {
+      return {
+        label: PHASE[phase] || phase,
+        bars: TDS.BUCKETS.map(function (b) {
+          var c = m.by_phase[phase][b];
+          return {
+            key: b,
+            value: c ? c[key] : null,
+            display: c ? format(c[key]) : '--',
+            thin: c && c.n < 30
+          };
+        })
+      };
+    });
+  }
+  TDS.bars(document.getElementById('phase-start'),
+    { rows: phaseRows('start_rate', TDS.pct), max: 100, showKeys: true });
+  TDS.bars(document.getElementById('phase-points'),
+    { rows: phaseRows('mean_fpts', function (v) { return TDS.num(v); }), showKeys: true });
+
+  // ------------------------------------------------------- per gameweek --
+  var weeks = Object.keys(m.by_gameweek)
+    .map(Number).filter(function (n) { return !isNaN(n); })
+    .sort(function (a, b) { return a - b; });
+
+  function at(week, bucket) {
+    return (m.by_gameweek[String(week)] || {})[bucket] || null;
+  }
+
+  TDS.columns(document.getElementById('gw-volume'), {
+    bands: weeks.map(function (w) {
+      var total = TDS.BUCKETS.reduce(function (n, b) {
+        var c = at(w, b); return n + (c ? c.n : 0);
+      }, 0);
+      return {
+        value: total,
+        label: (w % 5 === 0 || w === 1) ? String(w) : '',
+        title: 'GW' + w + ': ' + total + ' pickups',
+        colour: 'var(--waivers)'
+      };
+    })
+  });
+
+  TDS.columns(document.getElementById('gw-points'), {
+    bands: weeks.map(function (w) {
+      var c = at(w, 'waivers');
+      return {
+        value: c ? Math.round(c.mean_fpts * 10) / 10 : 0,
+        label: (w % 5 === 0 || w === 1) ? String(w) : '',
+        title: 'GW' + w + ': ' + (c ? TDS.num(c.mean_fpts) + ' mean FPts from ' +
+          c.n + ' waiver adds' : 'no data'),
+        colour: 'var(--snipe)'
+      };
+    })
+  });
+
+  var body = document.querySelector('#gw-table tbody');
+  weeks.forEach(function (w) {
+    var tr = document.createElement('tr');
+    var head = TDS.el('td', null, 'GW' + w);
+    head.dataset.value = w;
+    tr.appendChild(head);
+    TDS.BUCKETS.forEach(function (b) {
+      var c = at(w, b);
+      var n = TDS.el('td', 'num', c ? TDS.thousands(c.n) : '--');
+      n.dataset.value = c ? c.n : '';
+      tr.appendChild(n);
+      var mean = TDS.el('td', 'num', c ? TDS.num(c.mean_fpts) : '--');
+      mean.dataset.value = c ? c.mean_fpts : '';
+      tr.appendChild(mean);
+    });
+    body.appendChild(tr);
+  });
+  TDS.sortable(document.getElementById('gw-table'));
+}());
+</script>
+</body>
+</html>

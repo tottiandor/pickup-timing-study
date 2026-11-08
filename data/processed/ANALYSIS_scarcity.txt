@@ -1,0 +1,59 @@
+23846 pickups measured against their own position's pool
+
+------------------------------------------------------------------------------
+IS THE POOL DIFFERENT BY POSITION? (the objection, measured)
+------------------------------------------------------------------------------
+Taken at the moment of each pickup, inside that add's division.
+
+position              n   % rostered   free players of those, start%
+Goalkeepers        1773        18.2%             93             8.0%
+Defenders          8938        32.7%            186            15.7%
+Midfielders        8075        33.6%            204            12.6%
+Forwards           5060        30.4%            144             4.8%
+
+If the 'of those, start%' column moves a lot by position, the raw
+start rates in the rest of this study were measuring the pool, not
+the manager.
+
+------------------------------------------------------------------------------
+START RATE, WITH SCARCITY DIVIDED OUT
+------------------------------------------------------------------------------
+'Lift' is the manager's start rate minus the base rate of the free
+players at that position. It is what is left after the pool.
+
+position              n  add start%  pool start%       lift
+Goalkeepers        1773       91.8%         8.0%     +83.7
+Defenders          8938       78.9%        15.7%     +63.1
+Midfielders        8075       74.2%        12.6%     +61.6
+Forwards           5060       62.4%         4.8%     +57.5
+
+  spread in lift: 26.2 points, Goalkeepers best, Forwards worst
+
+------------------------------------------------------------------------------
+POINTS, RANKED INSIDE EACH POSITION'S OWN POOL
+------------------------------------------------------------------------------
+The raw means said defenders beat midfielders by 1.25 FPts. But
+defenders score more in this scoring system anyway. Ranking each
+add against the free confirmed starters at its OWN position asks
+whether managers choose better there, scarcity removed.
+
+position              n   mean FPts      pool mean within-pos pctile
+Goalkeepers        1603        8.08           7.43            52.4%
+Defenders          7026        8.80           6.72            58.6%
+Midfielders        5964        7.33           6.30            54.4%
+Forwards           3058        7.57           6.42            56.4%
+
+  spread: 6.2 percentile points, Defenders best, Goalkeepers worst
+
+  50%% is a coin flip among the free starters at that
+  position. A flat column here means the apparent position
+  effect was the scoring system and the pool, not the choosing.
+
+------------------------------------------------------------------------------
+VERDICT ON 'TAKE THE DEFENDER'
+------------------------------------------------------------------------------
+  spread in start-rate lift      : 26.2 points
+  spread in within-position rank : 6.2 percentile points
+
+  The ranks still separate, so some of the position effect is
+  real choosing rather than pool composition.

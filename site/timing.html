@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Timing — Pickup Timing Study 25/26</title>
+<meta name="description" content="When Fantrax pickups actually happen, and what the lineup announcement does to the clock.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/tds.css">
+</head>
+<body class="p-timing">
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="masthead-title">The Draft Society <span>/ Pickup Timing Study</span></div>
+    <nav>
+      <a href="index.html">Findings</a>
+      <a href="timing.html" aria-current="page">Timing</a>
+      <a href="positions.html">Positions</a>
+      <a href="season.html">Season</a>
+      <a href="faab.html">The money</a>
+      <a href="best-pickups.html">Best pickups</a>
+      <a href="method.html">Method</a>
+    </nav>
+  </header>
+
+  <p class="kicker">When managers actually move</p>
+  <h1>The lineup cliff</h1>
+  <p class="lede">Premier League team sheets are published 75 minutes before
+  kickoff. If managers were reacting to them, you would see it in the clock.
+  You do.</p>
+
+  <div class="stat-row" id="cliff-stats"></div>
+
+  <h2>The whole season, by the clock</h2>
+  <p>Every pickup, binned by how long before the player's own kickoff it was
+  made. The distribution is two-humped: a large mid-week mass, then a spike
+  jammed against the lock.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>All pickups</h3>
+      <span class="note">minutes before kickoff &mdash; note the scale runs to a week</span></div>
+    <div id="full-chart"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h3>The final three hours</h3>
+      <span class="note">the same data, zoomed</span></div>
+    <div id="close-chart"></div>
+    <p class="note" style="margin-top:14px">Nothing is different about those
+    five gold minutes except that the teams have just been published.</p>
+  </div>
+
+  <h2>Where the pickups land</h2>
+  <div class="scroll"><table id="split-table">
+    <thead><tr><th>Window</th><th class="num">Pickups</th><th class="num">Share</th></tr></thead>
+    <tbody></tbody>
+  </table></div>
+
+  <h2>Does moving sooner get you a better player?</h2>
+  <p>After the announcement everyone has the same information, so speed can
+  only be a queue advantage. Among pickups that produced a starter, here is
+  what each window got, and what share of the players actually available at
+  that moment it represented.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Points, by how much runway the player had</h3>
+      <span class="note">adds that produced a starter</span></div>
+    <div id="window-chart"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Share of the available upside captured</h3>
+      <span class="note">50% would be picking at random from what was free</span></div>
+    <div id="captured-chart"></div>
+    <p class="note" style="margin-top:14px">Managers who can see the lineups
+    still pick close to randomly from what is on the shelf. The information
+    tells them <em>that</em> a player is starting, not which starter is best.</p>
+  </div>
+
+  <div class="caveat">
+    <strong>Supply is not scarce.</strong> At the moment of a typical snipe
+    there were around 45 unowned players still free who went on to start that
+    gameweek, and the best of them was worth about 21 points right down to
+    kickoff. Nobody is racing anybody for the best free agent &mdash; they
+    are mostly not finding him.
+  </div>
+
+  <footer>
+    <p><a href="index.html">Back to the findings</a> &middot;
+    <a href="method.html">Method and caveats</a></p>
+  </footer>
+
+</div>
+
+<script src="data/metrics.js"></script>
+<script src="data/extra.js"></script>
+<script src="assets/tds.js"></script>
+<script>
+(function () {
+  var m, x;
+  try { m = TDS.data(); x = window.PICKUP_EXTRA; }
+  catch (e) { TDS.fail(document.getElementById('cliff-stats'), e.message); return; }
+
+  var cliff = m.lineup_cliff;
+  var info = x.speed.information;
+
+  [['Adds just after team news', cliff.after_announcement, 'KO-75 to KO-70'],
+   ['Adds just before', cliff.before_announcement, 'KO-80 to KO-75'],
+   ['Ratio', cliff.ratio + '×', 'nothing else changes in those ten minutes'],
+   ['Start rate, blind → informed',
+     Math.round(info.blind.start_rate) + '% → ' +
+     Math.round(info.informed.start_rate) + '%', 'what the team sheet is worth']
+  ].forEach(function (s, i) {
+    var cell = TDS.el('div', 'stat');
+    cell.appendChild(TDS.el('div', 'stat-label', s[0]));
+    cell.appendChild(TDS.el('div', 'stat-value' + (i === 2 ? ' gold' : ''), s[1]));
+    cell.appendChild(TDS.el('div', 'stat-sub', s[2]));
+    document.getElementById('cliff-stats').appendChild(cell);
+  });
+
+  TDS.renderTiming(document.getElementById('full-chart'), m);
+  TDS.renderTiming(document.getElementById('close-chart'), m, { upTo: 180 });
+
+  // ----------------------------------------------------------- the split --
+  var total = m.histogram.reduce(function (n, b) { return n + b.total; }, 0);
+  var groups = [
+    ['Inside 70 minutes of kickoff', 0, 70],
+    ['The snipe window, 70-75 min', 70, 75],
+    ['75 minutes to 3 hours', 75, 180],
+    ['3 to 24 hours', 180, 1440],
+    ['1 to 3 days', 1440, 4320],
+    ['More than 3 days', 4320, Infinity]
+  ];
+  var body = document.querySelector('#split-table tbody');
+  groups.forEach(function (g) {
+    var n = m.histogram.reduce(function (sum, band) {
+      var from = band.from;
+      return sum + ((from >= g[1] && from < g[2]) ? band.total : 0);
+    }, 0);
+    var tr = document.createElement('tr');
+    var name = TDS.el('td', null, g[0]);
+    if (g[1] === 70) { name.style.color = 'var(--gold)'; }
+    tr.appendChild(name);
+    tr.appendChild(TDS.el('td', 'num', TDS.thousands(n)));
+    tr.appendChild(TDS.el('td', 'num', TDS.pct(100 * n / total)));
+    body.appendChild(tr);
+  });
+
+  // --------------------------------------------------------- the windows --
+  var label = {
+    'blind, >75 min': 'Blind, over 75 min',
+    'SNIPE, 70-75': 'Snipe, 70-75 min',
+    '60-70 min': '60-70 min',
+    '45-60 min': '45-60 min',
+    '30-45 min': '30-45 min',
+    '15-30 min': '15-30 min',
+    'under 15 min': 'Under 15 min'
+  };
+  function windowRows(key, format, max) {
+    return x.speed.windows.map(function (w) {
+      return {
+        label: label[w.window] || w.window,
+        note: 'n=' + TDS.thousands(w.n),
+        bars: [{
+          key: w.window.indexOf('SNIPE') === 0 ? 'lineup_snipe'
+            : (w.informed ? 'late_add' : 'waivers'),
+          value: w[key],
+          display: format(w[key])
+        }]
+      };
+    });
+  }
+  TDS.bars(document.getElementById('window-chart'),
+    { rows: windowRows('mean_fpts', function (v) { return TDS.num(v); }) });
+  TDS.bars(document.getElementById('captured-chart'),
+    { rows: windowRows('captured', TDS.pct), max: 100 });
+}());
+</script>
+</body>
+</html>

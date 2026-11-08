@@ -1,0 +1,144 @@
+23846 scored pickups, 54149 free-and-started, 520403 free player-gameweeks
+
+--------------------------------------------------------------------------
+DISTRIBUTION OF OUTCOMES, not just the average
+--------------------------------------------------------------------------
+A mean of 6 points can be one 30-pointer and nine blanks, or ten
+sixes. For a decision rule it matters which.
+
+bucket            n    p25    med   mean    p75    p90 |   bust%    >=10    >=20
+waivers       17556   0.50   4.25   6.10  10.00  15.00 |   32.7%   25.0%    4.1%
+lineup_snipe   1175   2.50   5.75   7.64  11.50  16.75 |   17.6%   28.9%    6.1%
+late_add       5115   2.50   5.50   7.09  10.50  15.25 |   18.4%   27.4%    4.2%
+
+bust = under 2 FPts, which is roughly 'he did not play or did
+nothing'. The interesting column is bust%, not the mean.
+
+--------------------------------------------------------------------------
+DOES THE START-RATE GAP SURVIVE ITS OWN SAMPLE SIZE?
+--------------------------------------------------------------------------
+95%% Wilson intervals. If two intervals do not overlap, the gap is
+real at this sample size; if they do, it is not yet established.
+
+bucket            n   start%   95% interval
+waivers       17556    66.4%   65.7% to 67.1%
+lineup_snipe   1175    97.7%   96.7% to 98.4%
+late_add       5115    97.9%   97.5% to 98.3%
+
+waivers top out at 67.1%, snipes bottom out at 96.7%.
+VERDICT: the start-rate gap is real, and not close.
+
+--------------------------------------------------------------------------
+THE COUNTERFACTUAL: where did the add rank among what was there?
+--------------------------------------------------------------------------
+A pickup is not competing with 'nothing'. It is competing with
+every free agent available in that gameweek. The trap is which
+pool you compare against:
+
+  free and started   what a perfect start-predictor would have got.
+                     Comparing an *unconditional* add against this
+                     stacks the deck against the add, because the
+                     manager does not know who will start.
+  free, any outcome  the honest denominator. This is the choice the
+                     manager actually faced.
+
+the pool, over the season: 520403 free player-gameweeks, mean 0.86 FPts, 10.4% of them started
+
+bucket            n  add FPts   pool mean pctile in pool  beat pool%
+waivers       17556      6.10        0.85        81.1%       73.6%
+lineup_snipe   1175      7.64        0.86        88.0%       88.3%
+late_add       5115      7.09        0.86        87.9%       88.8%
+
+50%% percentile would mean picking at random. Anything well above
+it is genuine selection skill.
+
+and against the started-only pool, for completeness - remember
+this one is biased against the add:
+bucket         add FPts   pool mean  beat pool%
+waivers            6.10        6.47       37.6%   (if he started: 8.37)
+lineup_snipe       7.64        6.50       45.4%   (if he started: 7.78)
+late_add           7.09        6.51       43.9%   (if he started: 7.21)
+
+--------------------------------------------------------------------------
+THE CLEANEST TEST: the same player, reached two different ways
+--------------------------------------------------------------------------
+Player quality is the obvious confounder - maybe snipers simply
+chase better players. This holds the player-gameweek fixed and
+asks whether the route to him mattered.
+
+  late_add + waivers                 1159 player-gameweeks
+  late_add + lineup_snipe + waivers  362 player-gameweeks
+  late_add + lineup_snipe            149 player-gameweeks
+  lineup_snipe + waivers             125 player-gameweeks
+
+--------------------------------------------------------------------------
+BY POSITION, with the sample size shown so nothing gets quoted thin
+--------------------------------------------------------------------------
+pos  bucket            n   start%     mean   median    bust%
+D    waivers        6637    72.0%     6.90     5.25    30.9%
+D    lineup_snipe    394    98.5%     9.24     7.25    16.8%
+D    late_add       1907    98.7%     7.68     6.75    20.1%
+F    waivers        3716    49.9%     5.15     3.00    39.7%
+F    lineup_snipe    316    97.5%     7.32     4.62    22.8%
+F    late_add       1028    96.6%     6.68     4.50    22.7%
+G    waivers        1405    89.8%     7.41     6.50    19.3%
+G    lineup_snipe     37   100.0%     6.57     5.50    13.5%
+G    late_add        331    99.1%     7.34     6.25    11.8%
+M    waivers        5798    65.0%     5.47     3.75    33.5%
+M    lineup_snipe    428    97.0%     6.50     5.00    15.0%
+M    late_add       1849    97.6%     6.66     5.00    15.4%
+
+--------------------------------------------------------------------------
+DOES PAYING MORE GET YOU MORE? (FAAB bids on waiver claims)
+--------------------------------------------------------------------------
+2628 claims carry a bid. Range 1 to 206.
+
+bid quartile         n  mean bid mean pts   start%
+Q1                 657      1.00     6.75    68.6%
+Q2                 657      1.66     6.48    70.0%
+Q3                 657      3.60     6.63    73.5%
+Q4                 657     24.69     5.15    54.8%
+
+correlation between bid and points that gameweek: -0.010
+(near zero would mean the market cannot price a week ahead.)
+
+--------------------------------------------------------------------------
+THE LINEUP CLIFF
+--------------------------------------------------------------------------
+adds 70-75 min before kickoff (just AFTER team news):  1356
+adds 75-80 min before kickoff (just BEFORE it):        137
+ratio: 9.9x
+
+The five minutes either side of the announcement are otherwise
+identical - same day, same hour, same managers. The only thing that
+changes at KO-75 is that the team sheets land.
+
+how the adds split overall:
+  inside 70 min of kickoff    4850   20.3%
+  the snipe window, 70-75     1356    5.7%
+  75 min to 3 hours            608    2.5%
+  3 to 24 hours               2795   11.7%
+  1 to 3 days                11200   47.0%
+  more than 3 days            3037   12.7%
+
+--------------------------------------------------------------------------
+THE FAILED CLAIMS - a free second dataset
+--------------------------------------------------------------------------
+claim outcomes: {'EXECUTED': 23848, 'CLAIM_FAILED': 15108, 'UNDONE': 103, 'OVERRIDDEN': 5}
+
+15108 failed claims over 410 distinct players.
+The most fought-over players of the season:
+   Yeremy Pino              213 failed claims
+   Kevin                    201 failed claims
+   David Brooks             180 failed claims
+   Mateus Fernandes         169 failed claims
+   Xavi Simons              160 failed claims
+   Michael Keane            158 failed claims
+   Ben White                157 failed claims
+   Gabriel Martinelli       154 failed claims
+   Brajan Gruda             148 failed claims
+   Randal Kolo Muani        146 failed claims
+
+This is a record of demand, independent of outcome, and it is the
+only thing here that measures what managers *wanted* rather than
+what they got.

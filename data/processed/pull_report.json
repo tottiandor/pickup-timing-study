@@ -1,0 +1,44 @@
+[
+ {
+  "label": "igl",
+  "league_id": "d2k0bg7bmd66t1oo",
+  "name": "International Genie League",
+  "teams": 144,
+  "divisions": [
+   "Champions Division (T1)",
+   "Europa Division (T2)",
+   "League 1 (T3)",
+   "League 2 (T3)",
+   "National League (T4)",
+   "Ninja League (T4)",
+   "Nutmeg League (T4)",
+   "Senior League (T5)",
+   "Southern League (T5)",
+   "Streamer League (T5)",
+   "Sunday League (T5)",
+   "Sweat League (T5)"
+  ],
+  "periods": 38,
+  "rows": 41300,
+  "division_count": 12,
+  "draft_picks": 2304
+ },
+ {
+  "label": "community",
+  "league_id": "wpkabxe9md2ygbqb",
+  "name": "DraftPL Community League",
+  "teams": 72,
+  "divisions": [
+   "AA - Adama Athletic",
+   "BB - Brewster's Ballers",
+   "CC - Coutinho's Clan",
+   "DD - Doherty's Dawgs",
+   "EE - El Ghazi Elite",
+   "FF - Firmino's Faction"
+  ],
+  "periods": 38,
+  "rows": 27633,
+  "division_count": 6,
+  "draft_picks": 1152
+ }
+]

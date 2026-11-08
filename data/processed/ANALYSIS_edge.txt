@@ -1,0 +1,63 @@
+23846 pickups resolved against the pool facing them
+
+------------------------------------------------------------------------------
+THE ONLY DECISION LEFT: which confirmed starter did they take?
+------------------------------------------------------------------------------
+6071 informed pickups that produced a starter.
+
+  confirmed starters free at that moment : 53
+  what they took                         : 7.31 FPts
+  the best one available                 : 22.92 FPts
+  left on the table                      : 15.61 FPts
+  percentile of the pool they captured   : 52.1%
+
+50%% is picking at random from the confirmed starters. The team
+sheet answers 'is he playing'. It does not answer 'which of these
+forty-odd players is best', and the evidence is that managers
+barely try to.
+
+------------------------------------------------------------------------------
+THE LEVER THAT ACTUALLY MOVES: which position you take
+------------------------------------------------------------------------------
+Among informed pickups that started - so 'he is playing' is held
+constant and only the choice of player varies.
+
+position             n  mean FPts     median    captured
+Defenders         2234       8.03       7.00       56.3%
+Forwards          1282       6.96       4.75       48.4%
+Midfielders       2198       6.78       5.00       49.4%
+Goalkeepers        362       7.36       6.25       55.8%
+
+  Defenders over Midfielders: +1.25 FPts per pickup
+
+------------------------------------------------------------------------------
+HOW THAT COMPARES TO BEING QUICK
+------------------------------------------------------------------------------
+  being first after the team sheet   : +0.45 FPts per pickup
+  taking a defender rather than a midfielder : +1.25 FPts per pickup
+
+  The position choice is worth 3 times the speed.
+  Both are available to anyone looking at the same team sheet.
+
+------------------------------------------------------------------------------
+AND WHETHER HE IS AT HOME
+------------------------------------------------------------------------------
+venue             n   mean FPts
+home           3071        7.43
+away           3005        7.19
+
+------------------------------------------------------------------------------
+HOW MUCH SKILL IS ACTUALLY ON DISPLAY?
+------------------------------------------------------------------------------
+  what informed managers took        : 7.31 FPts
+  a coin flip among confirmed starters: 6.59 FPts
+  demonstrated selection skill       : +0.72 FPts per pickup
+
+  for scale, every confirmed starter in the season:
+    median 6.50, p75 11.75, p90 16.75, p99 28.75
+
+The pool is wildly right-skewed, so the gap between a median
+starter and a great one is mostly variance nobody can forecast.
+Which is the point: with the 'is he playing' question answered for
+free, there is very little skill left to exercise - and what little
+edge exists is systematic, not a read on the week.

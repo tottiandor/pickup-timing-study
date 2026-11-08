@@ -1,0 +1,106 @@
+pickup events: 22488, unique player-gameweeks: 7589, baseline: 51511
+
+per event (every add counts)
+  bucket              n   start%      mean   median     PPS    next4     held
+  waivers         16555    66.7%      6.12     4.25    8.38    21.62    22.15
+  lineup_snipe     1075    97.7%      7.74     6.00    7.88    20.86    15.58
+  late_add         4858    98.0%      7.07     5.50    7.19    21.18    18.34
+
+per unique player-gameweek (one decision each)
+  bucket              n   start%      mean   median     PPS    next4     held
+  waivers          4770    63.3%      5.48     3.50    7.86    20.04    21.20
+  lineup_snipe      628    96.3%      7.28     5.75    7.48    20.91    14.04
+  late_add         2191    96.2%      7.00     5.50    7.23    21.82    20.58
+
+never picked up, free at kickoff and started: n=51511 mean=6.49 median=5.25
+  compares to mean-if-started, not to mean:
+    waivers          8.38  (+1.89 vs baseline)
+    lineup_snipe     7.88  (+1.39 vs baseline)
+    late_add         7.19  (+0.70 vs baseline)
+
+by position
+                   bucket              n   start%      mean   median
+  D                waivers          6261    72.2%      6.91     5.25
+  D                lineup_snipe      363    98.3%      9.40     7.50
+  D                late_add         1815    98.8%      7.66     6.75
+  F                waivers          3500    50.3%      5.19     3.00
+  F                lineup_snipe      290    97.2%      7.39     5.00
+  F                late_add          979    96.7%      6.66     4.50
+  G                waivers          1319    89.6%      7.36     6.50
+  G                lineup_snipe       34   100.0%      6.21     5.25
+  G                late_add          312    99.0%      7.33     6.25
+  M                waivers          5475    65.3%      5.51     4.00
+  M                lineup_snipe      388    97.2%      6.60     5.00
+  M                late_add         1752    97.8%      6.65     5.00
+
+by season phase
+                   bucket              n   start%      mean   median
+  early            waivers          5459    66.0%      5.86     4.00
+  early            lineup_snipe      383    97.9%      7.84     6.00
+  early            late_add         1443    98.1%      7.05     5.25
+  mid              waivers          5534    64.7%      5.82     4.25
+  mid              lineup_snipe      376    97.6%      7.33     5.25
+  mid              late_add         1719    97.7%      7.08     5.50
+  late             waivers          5562    69.3%      6.67     5.00
+  late             lineup_snipe      316    97.5%      8.11     6.50
+  late             late_add         1696    98.2%      7.09     5.75
+
+by claim type (WW waiver claim, FA free agent add)
+                   bucket              n   start%      mean   median
+  FA               waivers          8638    65.4%      5.85     4.00
+  FA               lineup_snipe     1075    97.7%      7.74     6.00
+  FA               late_add         4858    98.0%      7.07     5.50
+  WW               waivers          7917    68.0%      6.41     4.50
+
+by league
+                   bucket              n   start%      mean   median
+  community        waivers          6207    66.0%      6.06     4.25
+  community        lineup_snipe      453    96.5%      7.28     5.25
+  community        late_add         1716    97.7%      7.02     5.50
+  igl              waivers         10348    67.1%      6.15     4.25
+  igl              lineup_snipe      622    98.6%      8.08     6.25
+  igl              late_add         3142    98.2%      7.10     5.50
+
+when adds happen (minutes before kickoff)
+        0-5 min   141 #                                       
+       5-10 min   175 #                                       
+      10-15 min   185 #                                       
+      15-20 min   154 #                                       
+      20-30 min   349 ##                                      
+      30-40 min   373 ##                                      
+      40-50 min   495 ###                                     
+      50-60 min   895 ######                                  
+      60-65 min   728 #####                                   
+      65-70 min  1117 #######                                 
+      70-75 min  1241 ########                                  <- THE SNIPE WINDOW: lineups just dropped
+      75-80 min   126 #                                         <- the five minutes BEFORE lineups drop
+      80-90 min    55 #                                       
+     90-120 min   129 #                                       
+    120-180 min   254 #                                       
+    180-360 min   760 #####                                   
+    360-720 min   310 ##                                      
+   720-1440 min  1550 ##########                              
+  1440-2880 min  4822 #################################       
+  2880-4320 min  5766 ########################################
+  4320-10080 min  2128 ##############                          
+     10080+ min   735 #####                                   
+
+the lineup cliff (lineups are announced at KO-75):
+  adds in the 5 min AFTER lineups drop (KO-75 to KO-70): 1241
+  adds in the 5 min BEFORE they drop   (KO-80 to KO-75): 126
+  ratio: 9.8x more adds once the team news is out
+
+best single pickups by points in the target gameweek:
+  Jurrien Timber         D   GW2   waivers        45.00  (214 min before KO)
+  Piero Hincapié         D   GW26  waivers        43.25  (8705 min before KO)
+  Sean Longstaff         M   GW6   late_add       39.75  (65 min before KO)
+  Konstantinos Mavropanos D   GW32  late_add       39.25  (27 min before KO)
+  Maxim De Cuyper        D   GW36  late_add       36.25  (63 min before KO)
+  Micky van de Ven       D   GW9   late_add       35.75  (70 min before KO)
+  Beto                   F   GW31  late_add       35.50  (48 min before KO)
+  Jose Sa                G   GW26  waivers        35.50  (10158 min before KO)
+  Diego Gomez            M   GW10  late_add       35.25  (2 min before KO)
+  Patrick Dorgu          D   GW38  waivers        35.00  (4380 min before KO)
+
+wrote C:\Users\totha\Dropbox\fantrax TDS\2627\pickup values\site\data\metrics.json
+wrote C:\Users\totha\Dropbox\fantrax TDS\2627\pickup values\site\data\metrics.js

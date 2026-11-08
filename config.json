@@ -1,0 +1,21 @@
+{
+  "_comment": "Leagues to study. seasonId is Fantrax's season number (925 = 2025-26). leagueId comes from the league's Fantrax address: fantrax.com/fantasy/league/<leagueId>/... Add the IGL and Community League 25/26 ids here. 'pilot' is a small league used to prove the pipeline.",
+  "season": "2025-26",
+  "seasonId": 925,
+  "timezone": "America/New_York",
+  "lineup_lock_minutes": 75,
+  "leagues": [
+    {
+      "label": "igl",
+      "name": "International Genie League",
+      "leagueId": "d2k0bg7bmd66t1oo"
+    },
+    {
+      "label": "community",
+      "name": "DraftPL Community League",
+      "leagueId": "wpkabxe9md2ygbqb"
+    }
+  ],
+  "sleepSeconds": 0.4,
+  "maxResultsPerPage": 500
+}

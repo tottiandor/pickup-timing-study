@@ -1,0 +1,377 @@
+/* The Draft Society - floodlit matchday.
+   Black and gold, Anton for headlines, IBM Plex Mono for anything that should
+   read like a readout. Built dark from the first line, never inverted.
+
+   On the type split, which is the main thing that makes this readable: the
+   house spec asks for Plex Mono on *data, stats and labels*, not on running
+   prose. Mono is tiring in bulk - every character the same width, no word
+   shapes to lock on to - so body copy is IBM Plex Sans, from the same
+   superfamily, and the mono is kept for numbers, tables, labels and chart
+   furniture where the tabular alignment earns its place.
+
+   Colour: gold is the accent of the brand, but a page of nothing but gold on
+   black is both monotonous and hard to read. Each page carries its own
+   --accent, and the data colours below are a proper categorical set rather
+   than three shades of the same thing.
+
+   Everything is capped at 940px because these pages are iframed into Wix at
+   that width, and must stay readable down to phone widths inside that
+   ceiling. Font fallbacks are a condensed serif and a real monospace, not
+   Arial, so a sandboxed iframe that cannot reach Google Fonts still looks
+   deliberate. */
+
+:root {
+  /* Surfaces: a blue-black rather than dead #000, layered so panels read as
+     lit from above rather than as holes. */
+  --black: #0b0d10;
+  --panel: #14171b;
+  --panel-2: #1a1e23;
+  --panel-edge: #262c33;
+  --hairline: #1d2228;
+
+  --gold: #e0b94a;
+  --gold-deep: #c9a227;
+  --gold-dim: rgba(224, 185, 74, 0.2);
+
+  /* Headings stay bright; body copy sits a step down, which is what stops a
+     long page glaring. */
+  --white: #f4f1ea;
+  --text: #cfcbc3;
+  --grey: #938d84;
+  --grey-dim: #645f59;
+
+  /* Categorical data colours. Buckets keep one colour each across every page
+     so a reader learns them once. */
+  --waivers: #5e8fc4;
+  --snipe: #e0b94a;
+  --late: #d2743f;
+  --baseline: #5f6a72;
+
+  /* Extra hues for cuts that are not buckets (positions, phases). */
+  --teal: #3f9e8c;
+  --violet: #9183cc;
+  --rose: #c96a84;
+
+  --accent: var(--gold);
+
+  --max: 940px;
+  --head: Anton, 'Arial Narrow', 'Times New Roman', serif;
+  --sans: 'IBM Plex Sans', system-ui, 'Segoe UI', sans-serif;
+  --mono: 'IBM Plex Mono', ui-monospace, 'Courier New', monospace;
+}
+
+/* Per-page accents, so moving between pages feels like moving. */
+body.p-timing    { --accent: var(--gold); }
+body.p-positions { --accent: var(--teal); }
+body.p-season    { --accent: var(--violet); }
+body.p-money     { --accent: var(--late); }
+body.p-best      { --accent: var(--waivers); }
+body.p-method    { --accent: var(--grey); }
+
+* { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--black);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16.5px;
+  line-height: 1.72;
+  background-image:
+    radial-gradient(90% 55% at 50% -10%, rgba(224, 185, 74, 0.09), transparent 62%),
+    radial-gradient(70% 45% at 85% 8%, rgba(94, 143, 196, 0.07), transparent 60%);
+  background-repeat: no-repeat;
+}
+
+.wrap { max-width: var(--max); margin: 0 auto; padding: 30px 18px 80px; }
+
+/* ---------------------------------------------------------------- type --- */
+
+h1, h2, .stat-value, .masthead-title {
+  font-family: var(--head);
+  font-weight: 400;
+  letter-spacing: 0.012em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--white);
+}
+
+h1 { font-size: clamp(32px, 7.2vw, 56px); line-height: 1.02; margin-bottom: 12px; }
+
+h2 {
+  font-size: clamp(21px, 4vw, 29px);
+  line-height: 1.12;
+  margin: 52px 0 10px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid var(--panel-edge);
+  position: relative;
+}
+/* A short accent stub under each section rule - the only place the page
+   colour shows as a block. */
+h2::after {
+  content: '';
+  position: absolute;
+  left: 0; bottom: -1px;
+  width: 54px; height: 2px;
+  background: var(--accent);
+}
+
+/* h3 drops Anton and the caps: inside a panel it is a label, not a headline,
+   and shouting twice in one box is what made this tiring. */
+h3 {
+  font-family: var(--sans);
+  font-size: 15.5px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  color: var(--white);
+  margin: 0;
+}
+
+p { margin: 13px 0; max-width: 70ch; }
+
+a { color: var(--accent); text-decoration: none;
+  border-bottom: 1px solid var(--gold-dim); }
+a:hover { border-bottom-color: var(--accent); }
+
+strong { color: var(--white); font-weight: 600; }
+em { color: var(--white); font-style: italic; }
+
+.lede { font-size: 18px; line-height: 1.68; color: #e2ded6; max-width: 62ch; }
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 11px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.note { font-size: 13.5px; line-height: 1.6; color: var(--grey); max-width: 74ch; }
+
+.caveat {
+  border-left: 2px solid var(--accent);
+  background: linear-gradient(90deg, rgba(255, 255, 255, 0.035), transparent 70%);
+  padding: 13px 16px;
+  margin: 20px 0;
+  font-size: 15px;
+  color: #d6d2ca;
+  max-width: 74ch;
+}
+
+ul { max-width: 70ch; padding-left: 20px; }
+li { margin: 7px 0; }
+
+/* ------------------------------------------------------------- masthead --- */
+
+.masthead { border-bottom: 1px solid var(--panel-edge); padding-bottom: 14px;
+  margin-bottom: 26px; }
+
+.masthead-title { font-size: 18px; letter-spacing: 0.04em; }
+.masthead-title span { color: var(--accent); }
+
+nav { margin-top: 13px; display: flex; flex-wrap: wrap; gap: 2px 0; }
+
+nav a {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.04em;
+  padding: 5px 13px 5px 0;
+  margin-right: 10px;
+  border: 0;
+  color: var(--grey);
+}
+nav a:hover { color: var(--white); }
+nav a[aria-current='page'] { color: var(--accent); }
+
+/* ---------------------------------------------------------------- stats --- */
+
+.stat-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 10px;
+  margin: 24px 0;
+}
+
+/* Separate bordered cards rather than one hairline-gridded block. A single
+   block leaves the container's own background showing as a dead rectangle
+   wherever the last row is short of cards, and `min-width: 0` is what stops
+   a long label pushing its track past the minmax and forcing a wrap in the
+   first place - grid tracks default to min-content, not zero. */
+.stat {
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--panel-edge);
+  padding: 16px 17px 15px;
+  min-width: 0;
+}
+
+.stat-label {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--grey);
+  margin-bottom: 9px;
+}
+
+.stat-value { font-size: 34px; line-height: 1; }
+.stat-value.gold { color: var(--gold);
+  text-shadow: 0 0 26px rgba(224, 185, 74, 0.32); }
+.stat-sub { font-size: 12.5px; line-height: 1.45; color: var(--grey);
+  margin-top: 6px; }
+
+/* --------------------------------------------------------------- panels --- */
+
+.panel {
+  background: linear-gradient(180deg, var(--panel-2), var(--panel));
+  border: 1px solid var(--panel-edge);
+  padding: 19px 18px 16px;
+  margin: 22px 0;
+}
+
+.panel-head { display: flex; justify-content: space-between; align-items: baseline;
+  gap: 12px; flex-wrap: wrap; margin-bottom: 16px;
+  padding-bottom: 11px; border-bottom: 1px solid var(--hairline); }
+.panel-head .note { font-size: 12.5px; }
+
+.legend { display: flex; flex-wrap: wrap; gap: 4px 16px; margin: 0;
+  font-family: var(--mono); font-size: 11.5px; color: var(--grey); }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.legend i { width: 11px; height: 11px; display: inline-block; flex: 0 0 auto; }
+
+/* --------------------------------------------------------------- tables --- */
+
+.scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 18px 0; }
+
+table { border-collapse: collapse; width: 100%; font-family: var(--mono);
+  font-size: 13px; min-width: 520px; }
+
+th, td { padding: 9px 11px; text-align: right; border-bottom: 1px solid var(--hairline);
+  white-space: nowrap; }
+th:first-child, td:first-child { text-align: left; }
+
+thead th {
+  font-size: 10.5px;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+  border-bottom: 1px solid var(--panel-edge);
+  background: var(--panel);
+  position: sticky;
+  top: 0;
+}
+
+tbody tr:nth-child(even) td { background: rgba(255, 255, 255, 0.016); }
+tbody tr:hover td { background: rgba(224, 185, 74, 0.06); }
+
+th.sortable { cursor: pointer; user-select: none; }
+th.sortable:hover { color: var(--white); }
+th.sortable::after { content: '  \2195'; opacity: 0.3; }
+th.sortable[data-dir='asc']::after { content: '  \2191'; opacity: 1; }
+th.sortable[data-dir='desc']::after { content: '  \2193'; opacity: 1; }
+
+td.num, th.num { font-variant-numeric: tabular-nums; }
+.thin { color: var(--gold-deep); font-size: 11px; }
+
+.tag {
+  font-family: var(--mono);
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border: 1px solid currentColor;
+}
+.tag.waivers { color: var(--waivers); }
+.tag.lineup_snipe { color: var(--snipe); }
+.tag.late_add { color: var(--late); }
+
+/* ----------------------------------------------------- bars (horizontal) --- */
+/* Divs rather than SVG so every label stays at a real font size at every
+   width. A viewBox-scaled SVG shrinks its own text to nothing on a phone. */
+
+.bars-group { margin: 0 0 18px; }
+.bars-group:last-child { margin-bottom: 4px; }
+
+.bars-label {
+  display: flex; justify-content: space-between; align-items: baseline;
+  gap: 10px; margin-bottom: 7px;
+  font-family: var(--sans); font-size: 14px; font-weight: 600;
+  color: var(--white);
+}
+.bars-note { font-family: var(--mono); font-style: normal; font-size: 11px;
+  font-weight: 400; color: var(--grey); }
+
+.bars-line { display: flex; align-items: center; gap: 10px; margin-bottom: 5px; }
+
+.bars-key { flex: 0 0 76px; font-family: var(--mono); font-size: 11px;
+  color: var(--grey); }
+
+.bars-track {
+  flex: 1 1 auto; height: 18px; min-width: 40px;
+  background: #11141700; border: 1px solid var(--hairline);
+  background-color: #101316;
+}
+
+.bars-fill { height: 100%; min-width: 2px; transition: width .4s ease; }
+
+.bars-value {
+  flex: 0 0 auto; min-width: 60px; text-align: right;
+  font-family: var(--mono); font-size: 13px;
+  font-variant-numeric: tabular-nums; color: var(--white);
+}
+
+/* ------------------------------------------------------ columns (vertical) --- */
+
+.cols { display: flex; align-items: flex-end; gap: 2px; height: 215px;
+  margin-top: 8px; }
+
+.cols-col { flex: 1 1 0; min-width: 0; display: flex; flex-direction: column;
+  justify-content: flex-end; height: 100%; }
+
+.cols-value { font-family: var(--mono); font-size: 10px; text-align: center;
+  color: var(--grey); margin-bottom: 3px;
+  font-variant-numeric: tabular-nums; min-height: 13px; }
+
+.cols-track { flex: 1 1 auto; display: flex; align-items: flex-end; }
+
+.cols-fill { width: 100%; background: var(--waivers); min-height: 2px;
+  transition: height .4s ease; }
+
+.cols-col.is-hot .cols-value { color: var(--gold); }
+.cols-col.is-hot .cols-fill { box-shadow: 0 0 18px rgba(224, 185, 74, 0.5); }
+
+.cols-label { font-family: var(--mono); font-size: 10px; text-align: center;
+  color: var(--grey-dim); margin-top: 6px; min-height: 13px; white-space: nowrap; }
+
+/* --------------------------------------------------------------- footer --- */
+
+footer {
+  margin-top: 58px; padding-top: 18px;
+  border-top: 1px solid var(--panel-edge);
+  font-size: 13px; color: var(--grey-dim);
+}
+footer a { color: var(--grey); border: 0; }
+footer a:hover { color: var(--accent); }
+
+/* ---------------------------------------------- standalone embed variant --- */
+/* The one-chart pages in site/embed/, which Wix iframes on their own. No
+   masthead, no page padding, nothing that assumes a surrounding page. */
+
+body.embed { background-image: none; }
+body.embed .wrap { padding: 0; }
+body.embed .panel { margin: 0; border: 0; background: var(--black); }
+
+@media (max-width: 560px) {
+  body { font-size: 16px; }
+  .lede { font-size: 16.5px; }
+  .stat-value { font-size: 28px; }
+  .wrap { padding: 22px 16px 52px; }
+  /* A dozen numbers across a phone collide into a smear; the bar heights and
+     the axis still carry the shape, and the hover title has the figure. */
+  .cols-value { display: none; }
+  .cols { height: 170px; }
+  .bars-key { flex-basis: 60px; }
+  .bars-value { min-width: 52px; font-size: 12px; }
+}

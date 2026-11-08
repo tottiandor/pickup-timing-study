@@ -1,0 +1,48 @@
+23520 waiver claims
+
+------------------------------------------------------------------------------
+HOW MUCH DOES ONE FAAB DOLLAR BUY, AND WHEN?
+------------------------------------------------------------------------------
+Spend is the sum of winning bids; losing bids cost nothing.
+
+by third of the season
+phase        claims  mean bid  win rate      spent  FPts/$ (GW) FPts/$ (held)
+GW1-12         9451      6.37     31.5%      15620         1.16          7.03
+GW13-25        7281      0.57     38.3%       2975         5.68         25.11
+GW26-38        6788      0.34     38.1%       1739        10.67         24.51
+
+in finer blocks
+phase        claims  mean bid  win rate      spent  FPts/$ (GW) FPts/$ (held)
+GW1-6          5495     10.41     29.6%      13831         0.69          4.84
+GW7-12         3956      0.77     34.0%       1789         4.80         23.91
+GW13-19        3519      0.34     40.1%        890         9.16         40.70
+GW20-25        3762      0.78     36.7%       2085         4.19         18.46
+GW26-32        3778      0.31     37.2%        897        10.54         28.60
+GW33-38        3010      0.38     39.2%        842        10.80         20.14
+
+------------------------------------------------------------------------------
+AMONG CLAIMS THAT ACTUALLY COST SOMETHING
+------------------------------------------------------------------------------
+Three quarters of claims are $0, and they drag every average
+towards infinity. This is the paying market on its own.
+
+phase        claims  mean bid  win rate  FPts/$ (GW) FPts/$ (held)
+GW1-12         3737     16.12     37.7%         0.52          4.21
+GW13-25        1160      3.55     61.8%         1.49         10.74
+GW26-38         767      2.99     65.7%         2.22          6.41
+
+------------------------------------------------------------------------------
+WHAT IT COSTS TO WIN A CONTESTED CLAIM, OVER THE SEASON
+------------------------------------------------------------------------------
+Within a division, among player-gameweeks that drew more than one
+claim - the only place money is actually competing.
+
+phase          auctions    winning bid       won on $0
+GW1-12             1976           8.35           39.3%
+GW13-25            1605           1.73           62.8%
+GW26-38            1505           0.94           74.9%
+
+------------------------------------------------------------------------------
+Read the FPts/$ columns as a price. A rising number means the same
+dollar is buying more as the season goes on, which would make
+holding budget back worth real points.
