@@ -63,7 +63,11 @@
     "start_rate": 68.5,
     "mean_fpts": 6.49,
     "held_gameweeks": 2.8,
-    "per_gameweek_held": 6.61
+    "held_fpts": 20.7,
+    "per_gameweek_held": 6.61,
+    "lag": 0.13,
+    "never_started": 37.1,
+    "pps": 7.76
    },
    {
     "tier": "$1",
@@ -74,7 +78,11 @@
     "start_rate": 68.9,
     "mean_fpts": 6.59,
     "held_gameweeks": 4.0,
-    "per_gameweek_held": 6.35
+    "held_fpts": 30.4,
+    "per_gameweek_held": 6.35,
+    "lag": 0.15,
+    "never_started": 31.2,
+    "pps": 7.66
    },
    {
     "tier": "$2-3",
@@ -85,7 +93,11 @@
     "start_rate": 72.0,
     "mean_fpts": 6.59,
     "held_gameweeks": 4.9,
-    "per_gameweek_held": 5.82
+    "held_fpts": 35.5,
+    "per_gameweek_held": 5.82,
+    "lag": 0.16,
+    "never_started": 24.0,
+    "pps": 7.09
    },
    {
     "tier": "$4-9",
@@ -96,7 +108,11 @@
     "start_rate": 65.8,
     "mean_fpts": 5.83,
     "held_gameweeks": 7.2,
-    "per_gameweek_held": 5.27
+    "held_fpts": 49.2,
+    "per_gameweek_held": 5.27,
+    "lag": 0.41,
+    "never_started": 21.8,
+    "pps": 7.24
    },
    {
     "tier": "$10-24",
@@ -107,7 +123,11 @@
     "start_rate": 58.5,
     "mean_fpts": 5.42,
     "held_gameweeks": 8.5,
-    "per_gameweek_held": 4.82
+    "held_fpts": 52.0,
+    "per_gameweek_held": 4.82,
+    "lag": 0.72,
+    "never_started": 18.9,
+    "pps": 6.77
    },
    {
     "tier": "$25+",
@@ -118,7 +138,11 @@
     "start_rate": 48.0,
     "mean_fpts": 5.25,
     "held_gameweeks": 16.8,
-    "per_gameweek_held": 4.63
+    "held_fpts": 98.7,
+    "per_gameweek_held": 4.63,
+    "lag": 1.72,
+    "never_started": 10.5,
+    "pps": 6.68
    }
   ],
   "consensus": [
@@ -166,7 +190,10 @@
     "win_rate": 29.5,
     "spent": 13660,
     "fpts_per_dollar": 0.68,
-    "held_per_dollar": 4.81
+    "held_per_dollar": 4.81,
+    "starts_per_dollar": 0.54,
+    "pps": 8.43,
+    "mean_held_gameweeks": 6.2
    },
    {
     "phase": "GW7-12",
@@ -175,7 +202,10 @@
     "win_rate": 33.6,
     "spent": 1620,
     "fpts_per_dollar": 5.01,
-    "held_per_dollar": 24.94
+    "held_per_dollar": 24.94,
+    "starts_per_dollar": 2.8,
+    "pps": 8.54,
+    "mean_held_gameweeks": 4.5
    },
    {
     "phase": "GW13-19",
@@ -184,7 +214,10 @@
     "win_rate": 39.8,
     "spent": 834,
     "fpts_per_dollar": 9.22,
-    "held_per_dollar": 41.31
+    "held_per_dollar": 41.31,
+    "starts_per_dollar": 4.54,
+    "pps": 8.74,
+    "mean_held_gameweeks": 3.5
    },
    {
     "phase": "GW20-25",
@@ -193,7 +226,10 @@
     "win_rate": 36.4,
     "spent": 1786,
     "fpts_per_dollar": 4.59,
-    "held_per_dollar": 20.37
+    "held_per_dollar": 20.37,
+    "starts_per_dollar": 2.24,
+    "pps": 8.71,
+    "mean_held_gameweeks": 3.8
    },
    {
     "phase": "GW26-32",
@@ -202,7 +238,10 @@
     "win_rate": 36.8,
     "spent": 687,
     "fpts_per_dollar": 12.83,
-    "held_per_dollar": 34.25
+    "held_per_dollar": 34.25,
+    "starts_per_dollar": 3.61,
+    "pps": 8.95,
+    "mean_held_gameweeks": 2.4
    },
    {
     "phase": "GW33-38",
@@ -211,7 +250,10 @@
     "win_rate": 38.8,
     "spent": 665,
     "fpts_per_dollar": 12.96,
-    "held_per_dollar": 24.31
+    "held_per_dollar": 24.31,
+    "starts_per_dollar": 2.6,
+    "pps": 9.09,
+    "mean_held_gameweeks": 1.8
    }
   ],
   "price": [
@@ -451,5 +493,5 @@
    }
   ]
  },
- "generated": "2026-11-08T10:40:30+01:00"
+ "generated": "2026-11-08T11:49:58+01:00"
 }

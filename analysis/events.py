@@ -82,6 +82,9 @@ EVENT_FIELDS = [
     "gw_fpts", "gw_started", "gw_starts", "gw_matches", "gw_minutes",
     "next4_fpts", "next4_gameweeks",
     "removed_utc", "held_gameweeks", "held_fpts",
+    # Points per start, tenure removed: held_fpts rewards simply owning
+    # somebody for a long time, however badly he played.
+    "held_starts", "held_start_fpts", "held_pps", "gw_to_first_start",
 ]
 
 BASELINE_FIELDS = [
@@ -298,9 +301,28 @@ def bucket_for(minutes):
 
 
 def held_window(points, matches, player_id, start, end):
-    """(gameweeks, points) for the spell the player spent on this roster."""
+    """What the spell on this roster was worth.
+
+    Returns (gameweeks, points, started_gameweeks, points_in_started,
+    first_started_gameweek).
+
+    `first_started_gameweek` is there for the stash case: a big early bid on
+    an injured player or a new signing returns nothing for weeks, then starts.
+    Judging that claim on the gameweek after it was made says nothing at all
+    about whether it was a good buy.
+
+    The last two carry PPS - points per start, as the brief defines it: points
+    in started rows over the number of started rows. It matters because
+    `held_fpts` alone conflates two very different players, one who started
+    every week and one who was carried on the bench and happened to be owned
+    for a long time. Counted per gameweek rather than per match, so a double
+    gameweek where he started once counts as one started gameweek carrying
+    that whole gameweek's points.
+    """
     gameweeks, total = set(), 0.0
-    for match in matches:
+    started, started_points = 0, 0.0
+    first_start = None
+    for match in sorted(matches, key=lambda m: m["kickoff"]):
         kickoff = match["kickoff"]
         if kickoff <= start or (end and kickoff >= end):
             continue
@@ -310,7 +332,13 @@ def held_window(points, matches, player_id, start, end):
         if scored:
             gameweeks.add(match["gameweek"])
             total += scored["fpts"]
-    return len(gameweeks), round(total, 2)
+            if scored["started"]:
+                started += 1
+                started_points += scored["fpts"]
+                if first_start is None:
+                    first_start = match["gameweek"]
+    return (len(gameweeks), round(total, 2), started,
+            round(started_points, 2), first_start)
 
 
 # --------------------------------------------------------------------------- #
@@ -374,7 +402,8 @@ def build(label, rows, player_gameweeks, fixtures, points, by_player):
         next4_rows = [s for s in next4 if s]
 
         removed = first_removal(removals, row["player_id"], row["team_id"], added)
-        held_gameweeks, held_points = held_window(
+        (held_gameweeks, held_points, held_starts, held_start_points,
+         first_start_gw) = held_window(
             points, matches, row["player_id"], added, removed)
 
         events.append({
@@ -406,6 +435,14 @@ def build(label, rows, player_gameweeks, fixtures, points, by_player):
             "removed_utc": removed.isoformat() if removed else "",
             "held_gameweeks": held_gameweeks,
             "held_fpts": held_points,
+            "held_starts": held_starts,
+            "held_start_fpts": held_start_points,
+            "held_pps": (round(held_start_points / held_starts, 2)
+                         if held_starts else ""),
+            # Gameweeks between the claim and the first time he actually
+            # started for this team. 0 means he started straight away.
+            "gw_to_first_start": (first_start_gw - gameweek
+                                  if first_start_gw is not None else ""),
         })
 
     baseline, wide = build_baseline(label, rows, league_id, player_gameweeks,

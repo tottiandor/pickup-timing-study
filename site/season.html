@@ -54,6 +54,31 @@
       of the year.</p>
   </div>
 
+  <h2>More football, or better football?</h2>
+  <p>That chart measures the week after the claim, which is a one-week
+  rental. The fuller measure &mdash; everything he scored before being
+  dropped &mdash; is unfair in the other direction, because a GW35 claim has
+  three gameweeks left to repay you and a GW15 claim has twenty. So split the
+  return in two: how many <em>starts</em> a dollar bought, and how good those
+  starts were.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Starts bought per dollar</h3>
+      <span class="note">how much football the money got you</span></div>
+    <div id="starts-chart"></div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Points per start</h3>
+      <span class="note">how good that football was, tenure removed</span></div>
+    <div id="pps-chart"></div>
+    <p class="note" style="margin-top:14px">This is the answer. Points per
+      start barely moves all season &mdash; <strong id="pps-range">&mdash;</strong>
+      &mdash; while starts per dollar swing by
+      <strong id="starts-range">&mdash;</strong>. Late money is not buying
+      better players. It is buying the same players far cheaper.</p>
+  </div>
+
   <h2>And it gets easier to win</h2>
   <p>Less money in circulation means contested players go cheap, and go to
   whoever bothers to claim them.</p>
@@ -180,6 +205,34 @@
           display: '$' + TDS.thousands(v.spent) }] };
     })
   });
+
+  // The decomposition: FPts per dollar = starts per dollar x points per start.
+  TDS.bars(document.getElementById('starts-chart'), {
+    rows: value.map(function (v) {
+      return { label: v.phase, note: 'held ' + v.mean_held_gameweeks + ' GW on average',
+        bars: [{ key: v === first ? 'late_add' : 'teal',
+          value: v.starts_per_dollar, display: TDS.num(v.starts_per_dollar) }] };
+    })
+  });
+
+  var ppsVals = value.filter(function (v) { return v.pps !== null; });
+  TDS.bars(document.getElementById('pps-chart'), {
+    rows: ppsVals.map(function (v) {
+      return { label: v.phase, note: 'n=' + TDS.thousands(v.claims) + ' claims',
+        bars: [{ key: 'violet', value: v.pps, display: TDS.num(v.pps) }] };
+    })
+  });
+
+  if (ppsVals.length) {
+    var lo = Math.min.apply(null, ppsVals.map(function (v) { return v.pps; }));
+    var hi = Math.max.apply(null, ppsVals.map(function (v) { return v.pps; }));
+    document.getElementById('pps-range').textContent =
+      TDS.num(lo) + ' to ' + TDS.num(hi);
+  }
+  var sLo = Math.min.apply(null, value.map(function (v) { return v.starts_per_dollar; }));
+  var sHi = Math.max.apply(null, value.map(function (v) { return v.starts_per_dollar; }));
+  document.getElementById('starts-range').textContent =
+    Math.round(sHi / sLo) + '×';
 
   TDS.bars(document.getElementById('price-chart'), {
     rows: price.map(function (p) {

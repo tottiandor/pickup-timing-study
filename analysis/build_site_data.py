@@ -126,6 +126,15 @@ def faab_blocks():
         won = [c for c in rows if c["won"] and c["pts"] is not None]
         rates = [c["held_fpts"] / c["held_gameweeks"] for c in won
                  if c.get("held_gameweeks") and c.get("held_fpts") is not None]
+        # The stash case: an expensive claim is often a player who will not
+        # play for weeks. Judging it on the gameweek after the claim says
+        # nothing, so the lag, the eventual-dud rate and PPS are carried too.
+        lags = [c["gw_to_first_start"] for c in won
+                if c.get("gw_to_first_start") is not None]
+        pps = [c["held_start_fpts"] / c["held_starts"] for c in won
+               if c.get("held_starts") and c.get("held_start_fpts") is not None]
+        with_holds = [c for c in won if c.get("held_starts") is not None]
+        never = sum(1 for c in with_holds if not c["held_starts"])
         tiers.append({
             "tier": name,
             "claims": len(rows),
@@ -139,7 +148,14 @@ def faab_blocks():
             "held_gameweeks": round(statistics.mean(
                 [c["held_gameweeks"] for c in won
                  if c.get("held_gameweeks") is not None]), 1) if won else None,
+            "held_fpts": round(statistics.mean(
+                [c["held_fpts"] for c in won
+                 if c.get("held_fpts") is not None]), 1) if won else None,
             "per_gameweek_held": round(statistics.mean(rates), 2) if rates else None,
+            "lag": round(statistics.mean(lags), 2) if lags else None,
+            "never_started": round(100.0 * never / len(with_holds), 1)
+            if with_holds else None,
+            "pps": round(statistics.mean(pps), 2) if pps else None,
         })
 
     # Consensus: how many independent divisions chased the same player-gameweek.
@@ -179,6 +195,16 @@ def faab_blocks():
         gw_points = sum(c["pts"] for c in won if c["pts"] is not None)
         held = sum(c["held_fpts"] for c in won
                    if c.get("held_fpts") is not None)
+        # PPS decomposition. held_per_dollar rewards simply owning somebody a
+        # long time, however badly he played - a late claim has fewer weeks
+        # left to accumulate, so the measure punishes it for the calendar
+        # rather than for the player. Splitting it into starts bought per
+        # dollar and points per start separates "more football" from "better
+        # football".
+        starts = sum(c["held_starts"] for c in won
+                     if c.get("held_starts") is not None)
+        start_points = sum(c["held_start_fpts"] for c in won
+                           if c.get("held_start_fpts") is not None)
         value.append({
             "phase": name,
             "claims": len(sub),
@@ -187,6 +213,11 @@ def faab_blocks():
             "spent": round(spend),
             "fpts_per_dollar": round(gw_points / spend, 2),
             "held_per_dollar": round(held / spend, 2),
+            "starts_per_dollar": round(starts / spend, 2),
+            "pps": round(start_points / starts, 2) if starts else None,
+            "mean_held_gameweeks": round(statistics.mean(
+                [c["held_gameweeks"] for c in won
+                 if c.get("held_gameweeks") is not None]), 1) if won else None,
         })
 
     # The price of a contested player, within a division, over the season.

@@ -65,6 +65,50 @@
     <div id="start-chart"></div>
   </div>
 
+  <h2>In defence of the big bid</h2>
+  <p>One honest objection to everything above: an expensive claim is often a
+  player who will not kick a ball for weeks &mdash; an injury return, a new
+  signing, somebody about to get a run. Judging that on the gameweek after
+  the claim says nothing about whether it was a good buy. The data agrees.</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Claims that never started at all for that team</h3>
+      <span class="note">the real dud rate</span></div>
+    <div id="dud-chart"></div>
+    <p class="note" style="margin-top:14px">Over a third of free claims never
+      played a minute for the team that took them. Above $25 it is one in
+      ten. Money buys a near-certainty that he eventually turns up &mdash;
+      <strong>after an average wait of <span id="lag">&mdash;</span>
+      gameweeks</strong>, against almost none for a free claim.</p>
+  </div>
+
+  <h2>But not a better player</h2>
+  <p>Points per start is the one measure with tenure stripped out. Total
+  points while held rewards simply owning somebody a long time, however badly
+  he played &mdash; and expensive claims are held far longer, so that measure
+  flatters them. PPS asks only: when he did start, what did he score?</p>
+
+  <div class="panel">
+    <div class="panel-head"><h3>Points per start, by what you paid</h3>
+      <span class="note">tenure removed</span></div>
+    <div id="pps-chart"></div>
+    <p class="note" style="margin-top:14px">It runs the wrong way. Free
+      claims returned <strong id="pps-free">&mdash;</strong> per start
+      against <strong id="pps-dear">&mdash;</strong> for $10+ &mdash; a gap
+      of 1.03 &plusmn; 0.22, which is 4.8 standard errors and real. The money
+      buys dependability of minutes, not quality.</p>
+  </div>
+
+  <div class="caveat">
+    <strong>Which does not mean never spend.</strong> FAAB is use-it-or-lose-it,
+    and teams got through $89 each on average, so unspent budget is worth
+    nothing. In absolute terms a $10+ claim returned <strong>72.8</strong>
+    points while held against <strong>20.7</strong> for a free one. Per dollar
+    that is poor; in points it is not. The defensible advice is not "don't
+    spend" &mdash; it is <em>don't spend early</em>, where you pay roughly
+    fifteen times the price for the same quality of footballer.
+  </div>
+
   <h2>Every tier</h2>
   <div class="scroll"><table id="faab-table">
     <thead><tr>
@@ -74,8 +118,10 @@
       <th class="num" data-type="num">Won</th>
       <th class="num" data-type="num">Start %</th>
       <th class="num" data-type="num">FPts</th>
+      <th class="num" data-type="num">Lag</th>
+      <th class="num" data-type="num">Never started</th>
+      <th class="num" data-type="num">PPS</th>
       <th class="num" data-type="num">GWs held</th>
-      <th class="num" data-type="num">Per GW</th>
     </tr></thead>
     <tbody></tbody>
   </table></div>
@@ -173,8 +219,10 @@
      [t.n_won, TDS.thousands(t.n_won)],
      [t.start_rate, t.start_rate === null ? '--' : TDS.pct(t.start_rate)],
      [t.mean_fpts, TDS.num(t.mean_fpts)],
-     [t.held_gameweeks, t.held_gameweeks === null ? '--' : TDS.num(t.held_gameweeks, 1)],
-     [t.per_gameweek_held, TDS.num(t.per_gameweek_held)]
+     [t.lag, t.lag === null ? '--' : TDS.num(t.lag)],
+     [t.never_started, t.never_started === null ? '--' : TDS.pct(t.never_started)],
+     [t.pps, t.pps === null ? '--' : TDS.num(t.pps)],
+     [t.held_gameweeks, t.held_gameweeks === null ? '--' : TDS.num(t.held_gameweeks, 1)]
     ].forEach(function (pair) {
       var td = TDS.el('td', 'num', pair[1]);
       td.dataset.value = pair[0] === null ? '' : pair[0];
@@ -183,6 +231,42 @@
     body.appendChild(tr);
   });
   TDS.sortable(document.getElementById('faab-table'));
+
+  // The stash case, and the measure that sees through it.
+  var dearest2 = tiers[tiers.length - 1];
+  if (dearest2.lag !== null) {
+    document.getElementById('lag').textContent = dearest2.lag;
+  }
+  var freeTier = tiers[0];
+  var dear = tiers.filter(function (t) { return t.mean_bid >= 10; });
+  if (freeTier.pps) {
+    document.getElementById('pps-free').textContent = TDS.num(freeTier.pps);
+  }
+  if (dear.length) {
+    var w = dear.reduce(function (a, t) { return a + t.n_won; }, 0);
+    var v = dear.reduce(function (a, t) { return a + t.pps * t.n_won; }, 0);
+    document.getElementById('pps-dear').textContent = TDS.num(v / w);
+  }
+
+  TDS.bars(document.getElementById('dud-chart'), {
+    max: 45,
+    rows: tiers.filter(function (t) { return t.never_started !== null; })
+      .map(function (t) {
+        return { label: t.tier, note: 'n=' + TDS.thousands(t.n_won) +
+            ' · waits ' + t.lag + ' GW',
+          bars: [{ key: t === tiers[0] ? 'late_add' : 'teal',
+            value: t.never_started, display: TDS.pct(t.never_started) }] };
+      })
+  });
+
+  TDS.bars(document.getElementById('pps-chart'), {
+    rows: tiers.filter(function (t) { return t.pps !== null; })
+      .map(function (t) {
+        return { label: t.tier, note: 'n=' + TDS.thousands(t.n_won),
+          bars: [{ key: t === tiers[0] ? 'teal' : 'waivers',
+            value: t.pps, display: TDS.num(t.pps) }] };
+      })
+  });
 
   TDS.bars(document.getElementById('consensus-chart'), {
     rows: x.faab.consensus.map(function (c) {

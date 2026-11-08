@@ -162,10 +162,15 @@ def attach_holds(claims, label):
             if label and row["league_label"] != label:
                 continue
             key = (row["player_id"], row["team_id"], row["target_gameweek"])
-            held[key] = (number(row["held_gameweeks"]), number(row["held_fpts"]))
+            held[key] = (number(row["held_gameweeks"]), number(row["held_fpts"]),
+                         number(row.get("held_starts")),
+                         number(row.get("held_start_fpts")),
+                         number(row.get("gw_to_first_start")))
     for claim in claims:
         key = (claim["player_id"], claim["team_id"], str(claim["gameweek"]))
-        claim["held_gameweeks"], claim["held_fpts"] = held.get(key, (None, None))
+        (claim["held_gameweeks"], claim["held_fpts"], claim["held_starts"],
+         claim["held_start_fpts"], claim["gw_to_first_start"]) = held.get(
+            key, (None, None, None, None, None))
 
 
 # --------------------------------------------------------------------------- #
